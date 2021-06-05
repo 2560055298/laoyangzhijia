@@ -1,0 +1,27 @@
+spring:
+  #配置：mysql连接数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/blog?useTimezone=UTC&useUnicode=true&characterEncoding=utf8
+
+  #配置：jpa
+  jpa:
+    hibernate:
+      ddl-auto: none   #生产环境：不需要（改变表了）
+    show-sql: true
+
+#配置日志
+logging:
+  level:
+    root: warn   # 设置springboot框架日志级别： 生产环境去除掉（普通信息）
+    com.yyy: info  # 配置包：日志级别
+
+  file:  # 设置日志文件的（路径）
+    path: log/blog-pro.log
+
+# 生产环境：端口号
+server:
+  port: 8081
+

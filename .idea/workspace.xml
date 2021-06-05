@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="02f1779f-844f-4df7-9ca3-56d9c9e8e709" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="FxmlFile" />
+        <option value="spring-beans.schema" />
+        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="E:\Maven\apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="E:\Maven\apache-maven-3.3.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8" />
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="1swMUecZpMofkOCv7ZV9r2LcoPz" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/admin" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\admin" />
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates\error" />
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources" />
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates" />
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\static\lib\waypoint" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates\common" />
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates" />
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\admin\common" />
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources" />
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\static\images" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yyy.pojo" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.DemoApplication">
+    <configuration name="MD5Utils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.yyy.util.MD5Utils" />
+      <module name="laoyangzhijia" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yyy.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="laoyangzhijia" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yyy.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MD5Utils" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="02f1779f-844f-4df7-9ca3-56d9c9e8e709" name="Default Changelist" comment="" />
+      <created>1621779215779</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621779215779</updated>
+      <workItem from="1621779216944" duration="338000" />
+      <workItem from="1621847427268" duration="10606000" />
+      <workItem from="1621898400915" duration="14641000" />
+      <workItem from="1621922775475" duration="21281000" />
+      <workItem from="1622008676035" duration="1321000" />
+      <workItem from="1622018542872" duration="14413000" />
+      <workItem from="1622097190521" duration="17627000" />
+      <workItem from="1622168084836" duration="3663000" />
+      <workItem from="1622181358885" duration="1974000" />
+      <workItem from="1622184196237" duration="864000" />
+      <workItem from="1622191124309" duration="14551000" />
+      <workItem from="1622214023302" duration="68000" />
+      <workItem from="1622214105530" duration="31000" />
+      <workItem from="1622355965913" duration="15688000" />
+      <workItem from="1622430763578" duration="1406000" />
+      <workItem from="1622440517887" duration="1479000" />
+      <workItem from="1622443853634" duration="3321000" />
+      <workItem from="1622452015009" duration="7336000" />
+      <workItem from="1622464386679" duration="874000" />
+      <workItem from="1622509440898" duration="482000" />
+      <workItem from="1622513363900" duration="1872000" />
+      <workItem from="1622526828317" duration="14498000" />
+      <workItem from="1622636834791" duration="4994000" />
+      <workItem from="1622784739345" duration="15580000" />
+      <workItem from="1622874402043" duration="19812000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/templates/archives.html</url>
+          <line>63</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
