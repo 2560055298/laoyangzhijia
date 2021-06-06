@@ -50,9 +50,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/admin" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -61,11 +62,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates\admin" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\admin" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates\error" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates" />
-      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\static\lib\waypoint" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates\common" />
@@ -148,7 +149,9 @@
       <workItem from="1622526828317" duration="14498000" />
       <workItem from="1622636834791" duration="4994000" />
       <workItem from="1622784739345" duration="15580000" />
-      <workItem from="1622874402043" duration="19812000" />
+      <workItem from="1622874402043" duration="20217000" />
+      <workItem from="1622943191590" duration="7709000" />
+      <workItem from="1622977310071" duration="7378000" />
     </task>
     <servers />
   </component>

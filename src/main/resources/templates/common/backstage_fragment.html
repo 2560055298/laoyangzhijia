@@ -20,8 +20,8 @@
         <div class="ui container">
             <div class="ui inverted secondary menu stackable">
                 <h2 class="ui teal header item">后台管理</h2>
-                <a href="#" class="mini m-item item m-mobile-hide" th:classappend="${choose == 1} ? 'active'"><i class="home icon"></i>博客</a>
-                <a href="#" class="mini m-item item m-mobile-hide" th:classappend="${choose == 2} ? 'active'"><i class="idea icon"></i>分类</a>
+                <a href="/admin/blogs" class="mini m-item item m-mobile-hide" th:classappend="${choose == 1} ? 'active'"><i class="home icon"></i>博客</a>
+                <a href="/admin/types" class="mini m-item item m-mobile-hide" th:classappend="${choose == 2} ? 'active'"><i class="idea icon"></i>分类</a>
                 <a href="#" class="mini m-item item m-mobile-hide" th:classappend="${choose == 3} ? 'active'"><i class="tag icon"></i>标签</a>
 
                 <!--登录后：头像-->
