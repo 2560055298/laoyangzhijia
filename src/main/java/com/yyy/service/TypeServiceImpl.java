@@ -27,7 +27,6 @@ public class TypeServiceImpl implements TypeService{
     }
 
     //2.1: 获取1个（分类）
-    @Transactional
     @Override
     public Type getType(Long id) {
         return typeRepository.getById(id);
@@ -39,7 +38,14 @@ public class TypeServiceImpl implements TypeService{
         return typeRepository.findAll(pageable);
     }
 
+    //2.3: 通过name查询到分类
+    @Override
+    public Type getTypeByName(String name) {
+        return typeRepository.findByName(name);
+    }
+
     //3、更新（分类）
+    @Transactional
     @Override
     public Type updateType(Long id, Type type) {
         Type temp = typeRepository.getById(id);
@@ -52,6 +58,7 @@ public class TypeServiceImpl implements TypeService{
     }
 
     //4、删除（分类）
+    @Transactional
     @Override
     public void deleteType(Long id) {
         typeRepository.deleteById(id);

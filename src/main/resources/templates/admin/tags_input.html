@@ -49,8 +49,8 @@
         <div class="ui attached pointing menu">
             <div class="ui container">
                 <div class="right menu">
-                    <a href="#" th:href="@{/admin/input}" class="teal active item">添加分类</a>
-                    <a href="#" th:href="@{/admin/types}" class="teal item">分类列表</a>
+                    <a href="#" th:href="@{/admin/tags/input}" class="teal active item">添加分类</a>
+                    <a href="#" th:href="@{/admin/tags}" class="teal item">分类列表</a>
                 </div>
             </div>
         </div>
@@ -59,12 +59,12 @@
         <!--中间内容-->
         <div class="m-container-small m-padded-tb-massive">
             <div class="ui container">
-                <form th:action="*{id == null} ? @{/admin/types} : @{/admin/types/{id}(id=*{id})}" method="post" th:object="${type}" class="ui form">
+                <form th:action="*{id == null} ? @{/admin/tags} : @{/admin/tags/{id}(id=*{id})}" method="post" th:object="${tag}" class="ui form">
                     <!--分类名称-->
                     <div class="required field">
                         <div class="ui labeled input">
                             <label class="ui teal basic label">名称</label>
-                            <input type="text" name="name" th:value="*{name}" placeholder="分类名称">
+                            <input type="text" name="name" th:value="*{name}" placeholder="标签名称">
                         </div>
                     </div>
 

@@ -76,6 +76,9 @@
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\static\images" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yyy.web.admin" />
+      <recent name="com.yyy.service" />
+      <recent name="com.yyy.dao" />
       <recent name="com.yyy.pojo" />
     </key>
   </component>
@@ -89,17 +92,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -152,6 +144,8 @@
       <workItem from="1622874402043" duration="20217000" />
       <workItem from="1622943191590" duration="7709000" />
       <workItem from="1622977310071" duration="7378000" />
+      <workItem from="1623033688325" duration="3206000" />
+      <workItem from="1623060512077" duration="9954000" />
     </task>
     <servers />
   </component>

@@ -13,17 +13,20 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
 public class TypeController {
     @Autowired
-    private TypeService service;
+    private TypeService typeService;
 
 
     /**
@@ -40,7 +43,7 @@ public class TypeController {
                     Pageable pageable,
                     Model model){
 
-        Page<Type> types = service.listType(pageable);
+        Page<Type> types = typeService.listType(pageable);
 
         model.addAttribute("page", types);
         return "/admin/types";
@@ -51,26 +54,81 @@ public class TypeController {
      * @return
      */
     @GetMapping("/input")
-    public String input(){
+    public String input(Model model){
+        model.addAttribute("type", new Type());
         return "/admin/types_input";
     }
 
-
     /**
-     * 接收分类：信息， 并添加到数据库
+     * 分类信息：添加到数据库
      * @return
      */
     @PostMapping("/types")
-    public String post(Type type, HttpSession session){
-        Type result = service.saveType(type);
+    public String post(@Valid Type type, BindingResult result, HttpSession session){
+        Type temp = typeService.getTypeByName(type.getName());
 
-        if(result == null){
-            session.setAttribute("info", "false");
+        if(temp != null){       //添加分类名称：已存在了
+            result.rejectValue("name", "nameError", "不能添加重复的分类");
+        }
+
+        if(result.hasErrors()){
+            return "/admin/types_input";
+        }
+
+        Type resultType = typeService.saveType(type);
+
+        if(resultType == null){
+            session.setAttribute("info", "分类：添加失败");
         }else{
-            session.setAttribute("info", "true");
+            session.setAttribute("info", "分类：添加成功");
         }
 
         return "redirect:/admin/types";
     }
+
+
+    /**
+     * 跳转到：修改分类页面
+     */
+    @GetMapping("/types/{id}/input")
+    public String editInput(@PathVariable Long id, Model model){
+        model.addAttribute("type", typeService.getType(id));
+        return "/admin/types_input";
+    }
+
+    /**
+     * 需修改的分类信息：在数据库中更新
+     * @return
+     */
+    @PostMapping("/types/{id}")
+    public String editPost(@Valid Type type, BindingResult result,@PathVariable Long id ,HttpSession session){
+        Type temp = typeService.getTypeByName(type.getName());
+
+        if(temp != null){       //更新的名称：已存在了
+            result.rejectValue("name", "nameError", "更新分类名：已存在");
+        }
+
+        if(result.hasErrors()){
+            return "/admin/types_input";
+        }
+
+        Type resultType = typeService.updateType(id, type);
+
+        if(resultType == null){
+            session.setAttribute("info", "分类：更新失败");
+        }else{
+            session.setAttribute("info", "分类：更新成功");
+        }
+
+        return "redirect:/admin/types";
+    }
+
+    @GetMapping("/types/{id}/delete")
+    public String delete(@PathVariable Long id, HttpSession session){
+        typeService.deleteType(id);
+        session.setAttribute("info", "分类：删除成功");
+        return "redirect:/admin/types";
+    }
+
 
 }

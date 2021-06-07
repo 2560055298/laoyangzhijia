@@ -22,6 +22,9 @@ public interface TypeService {
     //2.2：分页获取，所有（分类）
     Page<Type> listType(Pageable pageable);
 
+    //2.3: 通过name查询到分类
+    Type getTypeByName(String name);
+
     //3、更新（分类）
     Type updateType(Long id, Type type);
 

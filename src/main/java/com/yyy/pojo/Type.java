@@ -5,6 +5,7 @@
 package com.yyy.pojo;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class Type {
     @GeneratedValue
     private Long id;
 
+    @NotBlank(message = "分类内容, 不能为空")
     private String name;
 
     @OneToMany(mappedBy = "type")
