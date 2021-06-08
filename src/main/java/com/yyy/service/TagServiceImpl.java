@@ -15,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class TagServiceImpl implements TagService{
     @Autowired
@@ -43,6 +45,12 @@ public class TagServiceImpl implements TagService{
     @Override
     public Tag getTagByName(String name) {
         return tagRepository.findByName(name);
+    }
+
+    //2.4: 不分页，获取到所有的（标签）
+    @Override
+    public List<Tag> listTag() {
+        return tagRepository.findAll();
     }
 
     //3、更新（标签）

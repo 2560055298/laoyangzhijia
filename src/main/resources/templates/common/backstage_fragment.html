@@ -6,11 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
         <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
-        <!--中文排版：css-->
-        <link rel="stylesheet" href="../../static/css/typo.css" th:href="@{/css/typo.css}"/>
-        <link rel="stylesheet" href="../../static/css/animate.css" th:href="@{/css/animate.css}"/>
-        <link rel="stylesheet" href="../../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}"/>
-        <link rel="stylesheet" href="../../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}"/>
         <title th:text="${myTitle}">博客详情</title>
     </head>
 
@@ -90,12 +85,6 @@
         <div th:fragment="myJs">
             <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-            <script src="../../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>   <!--代码高亮-->
-            <script src="../../static/lib/tocbot/tocbot.js" th:src="@{/lib/tocbot/tocbot.js}"></script> <!--目录生成-->
-            <script src="../../static/lib/qrcode/qrcode.js" th:src="@{/lib/qrcode/qrcode.js}"></script> <!--文章二维码-->
-            <!--跳转顶部：延时-->
-            <script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.3/jquery.scrollTo.min.js"></script>
-            <script src="../../static/lib/waypoint/jquery.waypoints.js" th:src="@{/lib/waypoint/jquery.waypoints.js}"></script> <!--滚动监测-->
         </div>
     </body>
 

@@ -9,6 +9,8 @@ import com.yyy.pojo.Type;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 /**
  * 分类：业务类
  */
@@ -24,6 +26,9 @@ public interface TypeService {
 
     //2.3: 通过name查询到分类
     Type getTypeByName(String name);
+
+    //2.4: 不分页，获取到所有的（分类）
+    List<Type> listType();
 
     //3、更新（分类）
     Type updateType(Long id, Type type);

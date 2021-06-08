@@ -9,6 +9,8 @@ import com.yyy.pojo.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 /**
  * 标签：业务类
  */
@@ -24,6 +26,9 @@ public interface TagService {
 
     //2.3: 通过name查询到标签
     Tag getTagByName(String name);
+
+    //2.4: 不分页，获取到所有的（标签）
+    List<Tag> listTag();
 
     //3、更新（标签）
     Tag updateTag(Long id, Tag tag);
