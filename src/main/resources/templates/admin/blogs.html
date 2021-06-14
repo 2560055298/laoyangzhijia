@@ -53,30 +53,47 @@
 
         <!--中间内容-->
         <div class="m-container-small m-padded-tb-big">
+            <!--提示信息-->
+            <div class="ui success  message" th:unless="${#strings.isEmpty(session.info)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${session.info}"></p>
+            </div>
+
             <div  class="ui container">
                 <div class="ui secondary segment form">
                     <input type="hidden" name="page">
                     <div class="inline fields">
                         <!--文章：标题-->
                         <div class="field">
-                            <input type="text" name="title" placeholder="标题">
+                            <input id="title" type="text" name="title" placeholder="标题">
                         </div>
 
                         <!--文章：类型-->
                         <div class="field">
-                            <div class="ui selection dropdown">
-                                <input type="hidden" name="typeId">
-                                <i class="dropdown icon"></i>
-                                <div class="default text">类型</div>
-                                <div class="menu">
-                                    <div th:each="type : ${types}" class="item" th:data-value="${type.id}" th:text="${type.name}"></div>
+                            <div class="ui labeled action input">
+                                <div class="ui selection type dropdown ">
+                                    <input type="hidden" name="typeId">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">类型</div>
+                                    <div class="menu">
+                                        <div th:each="type : ${types}" class="item" th:data-value="${type.id}" th:text="${type.name}"></div>
 
-                                    <!--/*-->
-                                    <div class="item" data-value="1">数据结构</div>
-                                    <div class="item" data-value="2">操作系统</div>
-                                    <!--*/-->
+                                        <!--/*-->
+                                        <div class="item" data-value="1">数据结构</div>
+                                        <div class="item" data-value="2">操作系统</div>
+                                        <!--*/-->
+                                    </div>
+                                </div>
+
+                                <!--清除按钮-->
+                                <div id="clear-btn" class="ui orange compact button">
+                                    清除
                                 </div>
                             </div>
+
+
+
                         </div>
 
                         <!--文章：推荐按钮-->
@@ -105,6 +122,7 @@
                             <th>标题</th>
                             <th>类型</th>
                             <th>推荐</th>
+                            <th>发布状态</th>
                             <th>更新时间</th>
                             <th>操作</th>
                         </tr>
@@ -117,6 +135,7 @@
                             <td th:text="${blog.title}"></td>
                             <td th:text="${blog.type.name}"></td>
                             <td th:text="${blog.recommend} ? '是' : '否'"></td>
+                            <td th:text="${blog.published} ? '已发布' : '草稿'"></td>
                             <td th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd')}"></td>
                             <td>
                                 <a th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui teal basic button">编辑</a>
@@ -129,7 +148,7 @@
                         <!--表尾：上一页，下一页-->
                         <tfoot>
                         <tr>
-                            <th colspan="6">
+                            <th colspan="7">
                                 <div class="ui mini pagination menu" th:if="${page.totalPages > 1}">
                                     <a onclick="page(this)" th:attr="data-page=${page.number}-1" th:unless="${page.first}" class="item">上一页</a>
                                     <a onclick="page(this)" th:attr="data-page=${page.number}+1" th:unless="${page.last}" class="item">下一页</a>
@@ -216,6 +235,7 @@
 
         //点击：搜索按钮，进行内容（局部）刷新
         $("#search-btn").click(function () {
+            $("[name='page']").val(0);      //索引变为0
             loaddata();
         });
 
@@ -229,5 +249,22 @@
             });
         }
 
+        //消息提示：点击关闭
+        $('.message .close')
+            .on('click', function(){
+                $(this)
+                    .closest('.message')
+                    .transition('fade');
+            });
+
+        //清除：标题、类型
+        $('#clear-btn')
+            .on('click', function() {
+                $('.ui.type.dropdown')
+                    .dropdown('clear');
+
+                $('#title').val("");
+            })
+        ;
     </script>
 </html>

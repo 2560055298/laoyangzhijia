@@ -15,6 +15,9 @@ public interface BlogService {
     //查询：分页（博客文章）， 传递Blog的原因是因为：检索博客（名称、分类）
     Page<Blog> listBlog(Pageable pageable, BlogQuery blog);
 
+    //查询：分页（博客文章）
+    Page<Blog> listBlog(Pageable pageable);
+
     //保存：博客文章
     Blog saveBlog(Blog blog);
 

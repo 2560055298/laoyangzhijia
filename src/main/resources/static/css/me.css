@@ -207,3 +207,6 @@ body{
     }
 }
 
+i.icon.tag:before {
+    color: aliceblue;
+}

@@ -30,6 +30,12 @@ public interface TagService {
     //2.4: 不分页，获取到所有的（标签）
     List<Tag> listTag();
 
+    //2.5: 通过String(1,2,3 等) tag的ID字符串， 查询到List<Tag>的集合
+    List<Tag> listTag(String ids);
+
+    //2.6：指定数目， 查询标签（条数）
+    List<Tag> listTagTop(Integer size);
+
     //3、更新（标签）
     Tag updateTag(Long id, Tag tag);
 

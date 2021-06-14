@@ -150,6 +150,12 @@
       <workItem from="1623108603264" duration="3492000" />
       <workItem from="1623133715748" duration="22870000" />
       <workItem from="1623165406549" duration="17000" />
+      <workItem from="1623245347218" duration="3222000" />
+      <workItem from="1623506760412" duration="1358000" />
+      <workItem from="1623538262595" duration="13847000" />
+      <workItem from="1623565406481" duration="12267000" />
+      <workItem from="1623588305865" duration="1386000" />
+      <workItem from="1623625245255" duration="14941000" />
     </task>
     <servers />
   </component>
@@ -163,6 +169,14 @@
           <url>file://$PROJECT_DIR$/src/main/resources/templates/archives.html</url>
           <line>63</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/yyy/service/TagService.java</url>
+          <line>36</line>
+          <properties class="com.yyy.service.TagService" method="listTagTop">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

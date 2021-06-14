@@ -4,16 +4,40 @@
  */
 package com.yyy.web;
 
+import com.yyy.pojo.Blog;
+import com.yyy.service.BlogService;
+import com.yyy.service.TagService;
+import com.yyy.service.TypeService;
+import com.yyy.vo.BlogQuery;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class IndexController {
+    @Autowired
+    BlogService blogService;            //博客：业务层对象
+
+    @Autowired
+    TypeService typeService;            //类型：业务层对象
+
+    @Autowired
+    TagService tagService;              //标签：业务层对象
+
     //跳转主页
     @GetMapping("/")
-    public String index(){
+    public String index(
+            @PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC)
+                    Pageable pageable, Model model){
 
-        System.out.println("-----------index-------------");
+       model.addAttribute("page", blogService.listBlog(pageable));
+       model.addAttribute("type", typeService.listTypeTop(6));
+        model.addAttribute("tag", tagService.listTagTop(6));
+
         return "index";
     }
 

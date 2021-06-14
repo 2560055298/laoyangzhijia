@@ -36,13 +36,18 @@ public class Blog {
     private Date updateTime;            //更新时间
 
     @ManyToOne
+    private User user;                  //多篇博客 ==>>> 一个用户
+
+    @ManyToOne
     private Type type;                  //多篇博客 ===>>> 一个类型
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Tag> tags = new ArrayList<>();     //多篇博客 <==> 多个标签
 
-    @ManyToOne
-    private User user;                  //多篇博客 ==>>> 一个用户
+    private String description;         //博客描述
+
+    @Transient
+    private String tagIds;              //用于存放：前端传来的（标签索引）例如：1, 2, 3
 
     @OneToMany(mappedBy = "blog")
     private List<Comment> comments = new ArrayList<>();     //一篇博客 ==>> 多条评论
@@ -187,6 +192,23 @@ public class Blog {
         this.comments = comments;
     }
 
+
+    public String getTagIds() {
+        return tagIds;
+    }
+
+    public void setTagIds(String tagIds) {
+        this.tagIds = tagIds;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Blog{" +
@@ -203,6 +225,12 @@ public class Blog {
                 ", published=" + published +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", user=" + user +
+                ", type=" + type +
+                ", tags=" + tags +
+                ", description='" + description + '\'' +
+                ", tagIds='" + tagIds + '\'' +
+                ", comments=" + comments +
                 '}';
     }
 }
