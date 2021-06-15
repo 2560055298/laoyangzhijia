@@ -50,7 +50,6 @@ public class BlogController {
         model.addAttribute("blog", blog);
         model.addAttribute("tags", tagService.listTag());
         model.addAttribute("types", typeService.listType());
-        model.addAttribute("types", tagService.listTag());
     }
 
     /**

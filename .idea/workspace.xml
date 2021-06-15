@@ -50,23 +50,24 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates\admin" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\admin" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates\error" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources" />
-      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates\common" />
@@ -92,6 +93,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -156,6 +170,9 @@
       <workItem from="1623565406481" duration="12267000" />
       <workItem from="1623588305865" duration="1386000" />
       <workItem from="1623625245255" duration="14941000" />
+      <workItem from="1623652571581" duration="11024000" />
+      <workItem from="1623670822834" duration="6070000" />
+      <workItem from="1623712622339" duration="11975000" />
     </task>
     <servers />
   </component>
@@ -169,14 +186,6 @@
           <url>file://$PROJECT_DIR$/src/main/resources/templates/archives.html</url>
           <line>63</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/yyy/service/TagService.java</url>
-          <line>36</line>
-          <properties class="com.yyy.service.TagService" method="listTagTop">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

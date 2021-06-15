@@ -5,16 +5,18 @@
 package com.yyy.service;
 
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.yyy.NotFoundException;
 import com.yyy.dao.BlogRepository;
 import com.yyy.pojo.Blog;
 import com.yyy.pojo.Type;
+import com.yyy.util.MarkdownUtils;
 import com.yyy.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,19 @@ public class BlogServiceImpl implements BlogService{
     @Override
     public Blog getBlog(Long id) {
         return blogRepository.getById(id);
+    }
+
+    //查询：id获取到（博客信息）， 并将content内容markdown形式转为HTML
+    @Override
+    public Blog getAndConvert(Long id) {
+        Blog blog = blogRepository.getById(id);
+
+        if(blog == null){
+            throw new NotFoundException("该博客不存在");
+        }
+
+        blog.setContent(MarkdownUtils.markdownToHtmlExtensions(blog.getContent()));
+        return blog;
     }
 
     @Override
@@ -65,6 +80,19 @@ public class BlogServiceImpl implements BlogService{
     @Override
     public Page<Blog> listBlog(Pageable pageable) {
         return blogRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Blog> listBlogRecommendTop(Integer size) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "updateTime");
+        Pageable pageable = PageRequest.of(0, size, sort);
+        return blogRepository.findTop(pageable);
+    }
+
+    //全局：搜索
+    @Override
+    public Page<Blog> listBlog(String query, Pageable pageable) {
+        return blogRepository.findTop(query, pageable);
     }
 
     //发布博客

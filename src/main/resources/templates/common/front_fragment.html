@@ -27,10 +27,13 @@
                     <a href="/about" class="mini m-item item m-mobile-hide" th:classappend="${choose == 5} ? 'active'"><i class="info icon"></i>关于我</a>
 
                     <div class="right m-item item">
-                        <div class="ui input icon m-mobile-hide">
-                            <input type="text" placeholder="Search...">
-                            <i class="search icon link "></i>
-                        </div>
+                        <form name="search" th:action="@{/search}" method="post" target="_blank">
+                            <div class="ui input icon m-mobile-hide">
+                                <input type="text" name="query" placeholder="Search..." th:value="${query}">
+                                <i onclick="document.forms['search'].submit()" class="search icon link "></i>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>

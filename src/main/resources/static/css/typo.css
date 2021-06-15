@@ -7,6 +7,11 @@
   text-align: justify;
 }
 
+.typo li{
+  font-weight: 300;
+  padding: 4px 0;
+}
+
 /* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
 .typo article, aside, details, figcaption, figure, footer, header, menu, nav, section {
   display: block;
@@ -42,11 +47,12 @@
 /* 块/段落引用 */
 .typo blockquote {
   position: relative;
-  color: #999;
+  color: #656262;;
   font-weight: 400;
-  border-left: 1px solid #1abc9c;
+  border-left: 4px solid #6be48b;;
   padding-left: 1em;
   margin: 1em 3em 1em 2em;
+  background-color: #f7f6f6eb;
 }
 
 @media only screen and ( max-width: 640px ) {
