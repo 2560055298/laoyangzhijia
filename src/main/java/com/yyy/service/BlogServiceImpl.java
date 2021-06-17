@@ -8,6 +8,7 @@ package com.yyy.service;
 import com.yyy.NotFoundException;
 import com.yyy.dao.BlogRepository;
 import com.yyy.pojo.Blog;
+import com.yyy.pojo.Tag;
 import com.yyy.pojo.Type;
 import com.yyy.util.MarkdownUtils;
 import com.yyy.vo.BlogQuery;
@@ -20,10 +21,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -69,7 +67,10 @@ public class BlogServiceImpl implements BlogService{
                 }
 
                 //是否推荐：进行查询
-                predicates.add(cb.equal(root.<Boolean>get("recommend"), blog.isRecommend()));
+                if(blog.isRecommend()){
+                    predicates.add(cb.equal(root.<Boolean>get("recommend"), blog.isRecommend()));
+                }
+
 
                 cq.where(predicates.toArray(new Predicate[predicates.size()]));
                 return null;
@@ -89,10 +90,29 @@ public class BlogServiceImpl implements BlogService{
         return blogRepository.findTop(pageable);
     }
 
+    //查询：分页（通过，标签ID）
+    @Override
+    public Page<Blog> listBlog(Long tagId, Pageable pageable) {
+        return blogRepository.findAll(new Specification<Blog>() {
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+                Join join = root.join("tags");
+                return cb.equal(join.get("id"), tagId);
+            }
+        }, pageable);
+    }
+
     //全局：搜索
     @Override
     public Page<Blog> listBlog(String query, Pageable pageable) {
         return blogRepository.findTop(query, pageable);
+    }
+
+    //不分页：查询所有blog, 通过creatTime降序
+    @Override
+    public List<Blog> listBlog() {
+        Sort sort = Sort.by(Sort.Direction.DESC,"createTime");
+        return blogRepository.findAll(sort);
     }
 
     //发布博客
@@ -115,8 +135,15 @@ public class BlogServiceImpl implements BlogService{
 
         blog.setCreateTime(temp.getCreateTime());
         blog.setUpdateTime(new Date());
+        blog.setViews(temp.getViews());
         BeanUtils.copyProperties(blog, temp);
         return blogRepository.save(temp);
+    }
+
+    //更新：博客访问次数
+    @Override
+    public int updateViews(Long id) {
+        return blogRepository.updateViewsById(id);
     }
 
     //删除博客

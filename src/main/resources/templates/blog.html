@@ -534,72 +534,48 @@ h5,h6{font-size:1em;}
                 </div>
 
                 <!--留言区域-->
-                <div id="comment-container" class="ui bottom attached segment">
+                <div class="ui bottom attached segment">
                     <!--留言区列表-->
-                    <div class="ui teal segment">
-                        <div class="ui comments">
-                            <h3 class="ui dividing header">Comments</h3>
-                            <div class="comment">
-                                <a class="avatar" one-link-mark="yes">
-                                    <img src="../static/images/img.png" th:src="@{/images/img.png}">
-                                </a>
-                                <div class="content">
-                                    <a class="author" one-link-mark="yes">Matt</a>
-                                    <div class="metadata">
-                                        <span class="date">今天下午 5:42</span>
-                                    </div>
-                                    <div class="text">太赞了！ </div>
-                                    <div class="actions">
-                                        <a class="reply" one-link-mark="yes">回复</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment">
-                                <a class="avatar" one-link-mark="yes">
-                                    <img src="../static/images/img.png" th:src="@{/images/img.png}" >
-                                </a>
-                                <div class="content">
-                                    <a class="author" one-link-mark="yes">Elliot Fu</a>
-                                    <div class="metadata">
-                                        <span class="date">昨天上午12:30</span>
-                                    </div>
-                                    <div class="text">
-                                        <p>這對我的研究是非常有用.謝謝!</p>
-                                    </div>
-                                    <div class="actions">
-                                        <a class="reply" one-link-mark="yes">回复</a>
-                                    </div>
-                                </div>
-                                <div class="comments">
-                                    <div class="comment">
-                                        <a class="avatar" one-link-mark="yes">
-                                            <img src="../static/images/img.png" th:src="@{/images/img.png}">
+                    <div id="comment-container" class="ui teal segment">
+                        <div th:fragment="commentList">
+                            <div class="ui threaded comments" style="max-width: 100%">
+                                <h3 class="ui dividing header">评论</h3>
+                                <div class="comment" th:each="comment: ${comments}">
+                                    <a class="avatar" >
+                                        <img src="../static/images/img.png" th:src="@{${comment.avatar}}">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">
+                                            <span th:text="${comment.nickname}">Joe Henderson</span>
+                                            <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${comment.adminComment}">博主</div>
                                         </a>
-                                        <div class="content">
-                                            <a class="author" one-link-mark="yes">Jenny Hess</a>
-                                            <div class="metadata">
-                                                <span class="date">刚刚</span>
-                                            </div>
-                                            <div class="text">艾略特你永远是多么正确 :) </div>
-                                            <div class="actions">
-                                                <a class="reply" one-link-mark="yes">回复</a>
+                                        <div class="metadata">
+                                            <span class="date" th:text="${#dates.format(comment.createTime, 'yyyy-MM-dd HH:mm')}">5 天以前</span>
+                                        </div>
+                                        <div class="text" th:text="${comment.content}">老兄，这太棒了。非常感谢。 </div>
+                                        <div class="actions">
+                                            <a class="reply" data-commentid='666' data-commentnickname='老洋' th:attr="data-commentid=${comment.id}, data-commentnickname=${comment.nickname}"  onclick="reply(this)">回复</a>
+                                        </div>
+
+                                        <div class="comment" th:each="replyComment: ${comment.replyComments}">
+                                            <a class="avatar" >
+                                                <img src="../static/images/img.png" th:src="@{${replyComment.avatar}}">
+                                            </a>
+                                            <div class="content">
+                                                <a class="author">
+                                                    <span th:text="${replyComment.nickname}"></span>
+                                                    <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${replyComment.adminComment}">博主</div>
+                                                    <span th:text="| @${replyComment.parentComment.nickname}|" style="color: #00c4ff"></span>
+                                                </a>
+                                                <div class="metadata">
+                                                    <span class="date" th:text="${#dates.format(replyComment.createTime, 'yyyy-MM-dd HH:mm')}">5 天以前</span>
+                                                </div>
+                                                <div class="text" th:text="${replyComment.content}">老兄，这太棒了。非常感谢。 </div>
+                                                <div class="actions">
+                                                    <a class="reply" data-commentid='666' data-commentnickname='老洋' th:attr="data-commentid=${replyComment.id}, data-commentnickname=${replyComment.nickname}"  onclick="reply(this)">回复</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment">
-                                <a class="avatar" one-link-mark="yes">
-                                    <img src="../static/images/img.png" th:src="@{/images/img.png}">
-                                </a>
-                                <div class="content">
-                                    <a class="author" one-link-mark="yes">Joe Henderson</a>
-                                    <div class="metadata">
-                                        <span class="date">5 天以前</span>
-                                    </div>
-                                    <div class="text">老兄，这太棒了。非常感谢。 </div>
-                                    <div class="actions">
-                                        <a class="reply" one-link-mark="yes">回复</a>
                                     </div>
                                 </div>
                             </div>
@@ -607,9 +583,9 @@ h5,h6{font-size:1em;}
                     </div>
 
                     <!--提交留言区域-->
-                    <div class="ui form">
-                        <input type="text" name="blog.id" th:value="${blog.id}">
-                        <input type="text" name="parentComment.id" value="-1">
+                    <div class="ui form" id="comment-form">
+                        <input type="hidden" name="blog.id" th:value="${blog.id}">
+                        <input type="hidden" name="parentComment.id" value="-1">
                         <div class="field">
                             <textarea name="content"  placeholder="请输入评论信息...."></textarea>
                         </div>
@@ -617,26 +593,26 @@ h5,h6{font-size:1em;}
                             <div class="field m-mobile-wide m-margin-bottom-small">
                                 <div class="ui left icon input">
                                     <i class="user icon"></i>
-                                    <input type="text" name="ninckname" placeholder="姓名">
+                                    <input type="text" name="nickname" placeholder="姓名" th:value="${session.user != null} ? ${session.user.nickname}">
                                 </div>
                             </div>
 
                             <div class="field m-mobile-wide m-margin-bottom-small">
                                 <div class="ui left icon input">
                                     <i class="mail icon"></i>
-                                    <input type="text" name="email" placeholder="邮箱">
+                                    <input type="text" name="email" placeholder="邮箱" th:value="${session.user != null} ? ${session.user.email}">
                                 </div>
                             </div>
 
                             <div class="field m-mobile-wide m-margin-bottom-small">
-                                <div class="ui teal m-mobile-wide button ">
+                                <button id="commentpost-btn" class="ui teal m-mobile-wide button ">
                                     <i class="edit outline icon"></i>发布
-                                </div>
+                                </button>
                             </div>
-
-                            <!--错误信息-->
-                            <div class="ui error message"></div>
                         </div>
+
+                        <!--错误信息-->
+                        <div class="ui error message"></div>
                     </div>
                 </div>
             </div>
@@ -761,8 +737,8 @@ h5,h6{font-size:1em;}
         });
 
         //文章（二维码）
-        var serurl = "http://www.laoyangzhijia.com";        //协议+域名+默认端口80
-        var url = /*[[@{/blog/{id}(id=${blog.id})]]*/"";    //文章：电脑上路径
+        var serurl = "127.0.0.1";        //协议+域名+默认端口80
+        var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/"";    //文章：电脑上路径
         var qrcode = new QRCode("qrcode", {
 
             text: serurl + url,
@@ -823,5 +799,56 @@ h5,h6{font-size:1em;}
                 }
             }
         });
+
+        //起初：打开博客会对（博客评论进行刷新一次）
+        $(function () {
+            $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"")
+        });
+
+
+        //点击：发布按钮执行操作
+        $('#commentpost-btn').click(function () {
+            var result = $('.ui.form').form('validate form');       //显示校验：form表单
+            if(result){
+                console.log("提交成功");            //表单所有信息：填写正确，则控制台打印，校验成功
+                postData();
+            }else{
+                console.log("提交失败");
+            }
+        });
+
+        //将：数据进行回调
+        function postData() {
+            $("#comment-container").load(/*[[@{/comments}]]*/"", {
+                    "parentComment.id" : $("[name='parentComment.id']").val(),
+                    "blog.id" : $("[name='blog.id']").val(),
+                    "nickname" : $("[name='nickname']").val(),
+                    "email" : $("[name='email']").val(),
+                    "content" : $("[name='content']").val(),
+                },
+                function (responseTxt, statusTxt, xhr) {
+                    //回滚
+                    $(window).scrollTo($('#comment-container'), 500);
+                    //清空：评论框、父级评论id
+                    clearContent();
+            });
+        }
+
+        //清空：评论框、父级评论id
+        function clearContent() {
+            $("[name='nickname']").val('');     //清空：已提交（昵称）
+            $("[name='email']").val('');        //清空：已提交（邮箱）
+            $("[name='content']").val('');      //清空：已提交（内容）
+            $("[name='content']").attr("placeholder", "请输入评论信息...");
+            $("[name='parentComment.id']").val(-1);
+        }
+
+        //回复
+        function reply(obj) {
+            var commentId = $(obj).data('commentid');     //获取到：点击回复（父级ID）
+            var commentNickname = $(obj).data('commentnickname');  //获取到：点击回复（父级名称）
+            $("[name='content']").attr("placeholder", "@" + commentNickname).focus();   //显示@的父级名称到：评论框
+            $("[name='parentComment.id']").val(commentId);         //为当前评论着设置：父级ID
+        }
     </script>
 </html>

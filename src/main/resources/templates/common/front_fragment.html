@@ -20,11 +20,11 @@
             <div class="ui container">
                 <div class="ui inverted secondary menu stackable">
                     <h2 class="ui teal header item">老洋之家</h2>
-                    <a href="/" class="mini m-item item m-mobile-hide" th:classappend="${choose == 1} ? 'active'"><i class="home icon"></i>首页</a>
-                    <a href="/types" class="mini m-item item m-mobile-hide" th:classappend="${choose == 2} ? 'active'"><i class="idea icon"></i>分类</a>
-                    <a href="/tags" class="mini m-item item m-mobile-hide" th:classappend="${choose == 3} ? 'active'"><i class="tag icon"></i>标签</a>
-                    <a href="/archives" class="mini m-item item m-mobile-hide" th:classappend="${choose == 4} ? 'active'"><i class="clone icon"></i>归档</a>
-                    <a href="/about" class="mini m-item item m-mobile-hide" th:classappend="${choose == 5} ? 'active'"><i class="info icon"></i>关于我</a>
+                    <a th:href="@{/}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 1} ? 'active'"><i class="home icon"></i>首页</a>
+                    <a th:href="@{/types/-1}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 2} ? 'active'"><i class="idea icon"></i>分类</a>
+                    <a th:href="@{/tags/-1}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 3} ? 'active'"><i class="tag icon"></i>标签</a>
+                    <a th:href="@{/archives}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 4} ? 'active'"><i class="clone icon"></i>归档</a>
+                    <a th:href="@{/about}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 5} ? 'active'"><i class="info icon"></i>关于我</a>
 
                     <div class="right m-item item">
                         <form name="search" th:action="@{/search}" method="post" target="_blank">

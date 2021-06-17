@@ -4,6 +4,7 @@ import com.yyy.pojo.Blog;
 import com.yyy.vo.BlogQuery;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -26,15 +27,23 @@ public interface BlogService {
     //查询：推荐
     List<Blog> listBlogRecommendTop(Integer size);
 
+    //查询：分页（通过，标签ID）
+    Page<Blog> listBlog(Long tagId, Pageable pageable);
+
     //全局：搜索
     Page<Blog> listBlog(String query, Pageable pageable);
 
+    //不分页：查询所有blog, 通过creatTime降序
+    List<Blog> listBlog();
 
     //保存：博客文章
     Blog saveBlog(Blog blog);
 
     //更新：博客文章
     Blog updateBlog(Long id, Blog blog);
+
+    //更新：博客访问次数
+    int updateViews(Long id);
 
     //删除：博客文章
     void deleteBlog(Long id);

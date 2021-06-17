@@ -70,11 +70,11 @@
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\static" />
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\static\images" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates\common" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\admin\common" />
-      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources" />
-      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\static\images" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.yyy.web.admin" />
@@ -173,6 +173,12 @@
       <workItem from="1623652571581" duration="11024000" />
       <workItem from="1623670822834" duration="6070000" />
       <workItem from="1623712622339" duration="11975000" />
+      <workItem from="1623738421847" duration="21357000" />
+      <workItem from="1623798464532" duration="11786000" />
+      <workItem from="1623824477438" duration="14978000" />
+      <workItem from="1623887025228" duration="4904000" />
+      <workItem from="1623897040686" duration="3613000" />
+      <workItem from="1623911505799" duration="3455000" />
     </task>
     <servers />
   </component>
@@ -184,8 +190,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/templates/archives.html</url>
-          <line>63</line>
+          <line>75</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/templates/blog.html</url>
+          <line>556</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

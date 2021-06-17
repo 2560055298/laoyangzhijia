@@ -1,3 +1,5 @@
 spring:
   profiles:
     active: dev
+
+comment.avatar: /images/comment.jpg

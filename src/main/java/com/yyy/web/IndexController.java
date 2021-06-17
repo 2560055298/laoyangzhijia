@@ -59,40 +59,7 @@ public class IndexController {
     public String blog(@PathVariable Long id, Model model){
         Blog blog = blogService.getAndConvert(id);
         model.addAttribute("blog", blog);
-
+        blogService.updateViews(id);
         return "blog";
     }
-
-
-    //跳转：类型页面
-    @GetMapping("/types")
-    public String types(){
-        System.out.println("-----------types-------------");
-        return "types";
-    }
-
-    //跳转：标签页面
-    @GetMapping("/tags")
-    public String tags(){
-        System.out.println("-----------tags-------------");
-        return "tags";
-    }
-
-    //跳转：归档页面
-    @GetMapping("/archives")
-    public String archives(){
-        System.out.println("-----------archives-------------");
-        return "archives";
-    }
-
-
-    //跳转：关于我页面
-    @GetMapping("/about")
-    public String about(){
-        System.out.println("-----------about-------------");
-        return "about";
-    }
-
-
-
 }

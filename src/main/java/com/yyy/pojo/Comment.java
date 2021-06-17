@@ -5,6 +5,8 @@
 package com.yyy.pojo;
 
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,7 +23,7 @@ public class Comment {
     private Long id;
     private String nickname;        //昵称
     private String email;           //邮箱
-    private String avartar;         //头像
+    private String avatar;         //头像
     private String content;         //评论内容
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;        //创建时间
@@ -34,6 +36,8 @@ public class Comment {
 
     @ManyToOne
     private Blog blog;              //多条评论  ==>>> 1篇博客
+
+    private boolean adminComment;   //true为博主评论， false则不是
 
     public Comment() {
 
@@ -63,12 +67,12 @@ public class Comment {
         this.email = email;
     }
 
-    public String getAvartar() {
-        return avartar;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setAvartar(String avartar) {
-        this.avartar = avartar;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getContent() {
@@ -87,14 +91,6 @@ public class Comment {
         this.createTime = createTime;
     }
 
-    public Blog getBlog() {
-        return blog;
-    }
-
-    public void setBlog(Blog blog) {
-        this.blog = blog;
-    }
-
     public List<Comment> getReplyComments() {
         return replyComments;
     }
@@ -111,15 +107,35 @@ public class Comment {
         this.parentComment = parentComment;
     }
 
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
+    }
+
+    public boolean isAdminComment() {
+        return adminComment;
+    }
+
+    public void setAdminComment(boolean adminComment) {
+        this.adminComment = adminComment;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
                 "id=" + id +
                 ", nickname='" + nickname + '\'' +
                 ", email='" + email + '\'' +
-                ", avartar='" + avartar + '\'' +
+                ", avatar='" + avatar + '\'' +
                 ", content='" + content + '\'' +
                 ", createTime=" + createTime +
+                ", replyComments=" + replyComments +
+                ", parentComment=" + parentComment +
+                ", blog=" + blog +
+                ", adminComment=" + adminComment +
                 '}';
     }
 }
