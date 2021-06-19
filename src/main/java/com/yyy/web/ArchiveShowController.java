@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ArchiveShowController {
@@ -22,10 +23,10 @@ public class ArchiveShowController {
     //跳转：归档页面
     @GetMapping("/archives")
     public String archives(Model model){
-        //按creatTime降序查询：所有blog
-        List<Blog> blogs = blogService.listBlog();
-        model.addAttribute("blogs", blogs);
+        Map<String, List<Blog>> maps = blogService.archiveBlog();
 
+        model.addAttribute("maps", maps);
+        model.addAttribute("blogCount", blogService.countBlog());
         return "archives";
     }
 

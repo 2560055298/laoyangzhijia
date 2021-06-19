@@ -59,6 +59,6 @@ public class LoginController {
     public String layout(HttpSession session){
         session.removeAttribute("user");        //清除用户信息
         session.removeAttribute("message");     //清除：消息
-        return "redirect:/admin";
+        return "redirect:/";
     }
 }

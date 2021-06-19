@@ -22,9 +22,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class BlogServiceImpl implements BlogService{
@@ -108,12 +106,27 @@ public class BlogServiceImpl implements BlogService{
         return blogRepository.findTop(query, pageable);
     }
 
-    //不分页：查询所有blog, 通过creatTime降序
+    //查询到：各个年份的（博客集合）
     @Override
-    public List<Blog> listBlog() {
-        Sort sort = Sort.by(Sort.Direction.DESC,"createTime");
-        return blogRepository.findAll(sort);
+    public Map<String, List<Blog>> archiveBlog() {
+        //1、查询到：所有的年份
+        List<String> years = blogRepository.findGroupYear();
+        Map<String, List<Blog>> map = new HashMap<>();
+
+        for(String year : years){
+            map.put(year, blogRepository.findByYear(year));
+        }
+
+        return map;
     }
+
+
+    //计算：blog的总数量
+    @Override
+    public Long countBlog() {
+        return blogRepository.count();
+    }
+
 
     //发布博客
     @Override

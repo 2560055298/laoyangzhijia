@@ -10,14 +10,14 @@
         <title>标签页面</title>
     </head>
 
-    <body>
+    <body class="bg-front">
         <!--导航栏-->
         <div>
             <nav th:replace="~{common/front_fragment::nav(3)}"></nav>
         </div>
 
         <!--中间内容-->
-        <div class="m-container-small m-padded-tb-big">
+        <div class="m-container-small m-padded-tb-big m-opacity">
             <!--文章-->
             <div class="ui container">  <!--拥有：响应式的效果-->
                 <!--头介绍-->
@@ -39,7 +39,7 @@
                             人生路
                         </a>
 
-                        <a href="#" class="ui  basic left pointing label" th:classappend="${myId == tag.id} ? teal" th:text="${#arrays.length(tag.blogs)}">
+                        <a href="#" class="ui basic left pointing label" th:classappend="${myId == tag.id} ? teal" th:text="${#arrays.length(tag.blogs)}">
                             22
                         </a>
                     </div>
@@ -50,7 +50,7 @@
                     <div class="ui padded padded-lr-big vertical m-padded-tb-large  m-mobile-clear segment" th:each="blog : ${page.content}">
                         <div class="ui mobile reversed stackable grid">
                             <div class="eleven wide column">
-                                <h3 class="ui header"><a class="m-black" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}"></a></h3>
+                                <h3 class="ui header"><a class="m-black" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}"></a></h3>
                                 <p class="m-text" th:text="|${blog.description}...|">
                                     随着岁月的境迁, 同学们的差距会越来越来大？这是什么原因呢？ 很大程度上，读书阶段就已经造就了这种局面。
                                     我想这便是自我约束力的丧失。导致生活任意妄为， 浑浑噩噩，每天混迹于
@@ -75,18 +75,18 @@
                                         </div>
 
                                         <div class="five wide column right aligned">
-                                            <a href="#" target="_blank" class="ui teal label basic m-text-thin m-padded-tiny" th:text="${blog.type.name}">思辨人生</a>
+                                            <a  class="ui teal label basic m-text-thin m-padded-tiny" th:text="${blog.type.name}">思辨人生</a>
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <a href="" class="ui teal basic left pointing label m-padded-tiny m-text-thin" th:each="tag : ${blog.tags}" th:text="${tag.name}"></a>
+                                        <a href="" th:href="@{/tags/{id}(id=${tag.id})}" class="ui  basic left pointing label m-padded-tiny m-text-thin" th:classappend="${tag.id == myId} ? teal" th:each="tag : ${blog.tags}" th:text="${tag.name}"></a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="five wide column">
-                                <a href="#" target="_blank">
+                                <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
                                     <img src="https://picsum.photos/id/239/500/300" alt="" class="ui rounded image" th:src="@{${blog.firstPicture}}">
                                 </a>
                             </div>
@@ -99,11 +99,11 @@
                 <div class="ui bottom attached segment" th:unless="!${page.totalPages > 1}">
                     <div class="ui middle aligned two column grid">
                         <div class="column">
-                            <a th:href="@{/tags(page=(${page.number} - 1))}" class="ui mini teal basic button ">上一页</a>
+                            <a th:href="@{/tags/{id}?page={page}(id=${myId},page=${page.number}-1)}" class="ui mini teal basic button">上一页</a>
                         </div>
 
                         <div class="right aligned column">
-                            <a th:href="@{/tags(page=(${page.number} + 1))}" class="ui mini teal basic button ">下一页</a>
+                            <a th:href="@{/tags/{id}?page={page}(id=${myId},page=${page.number}+1)}" class="ui mini teal basic button">下一页</a>
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 博客类
@@ -33,8 +34,11 @@ public interface BlogService {
     //全局：搜索
     Page<Blog> listBlog(String query, Pageable pageable);
 
-    //不分页：查询所有blog, 通过creatTime降序
-    List<Blog> listBlog();
+    //查询到：各个年份的（博客集合）
+    Map<String, List<Blog>> archiveBlog();
+
+    //查询：blog的数量
+    public Long countBlog();
 
     //保存：博客文章
     Blog saveBlog(Blog blog);

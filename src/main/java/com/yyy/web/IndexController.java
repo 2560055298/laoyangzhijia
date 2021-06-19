@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class IndexController {
     @Autowired
@@ -61,5 +63,13 @@ public class IndexController {
         model.addAttribute("blog", blog);
         blogService.updateViews(id);
         return "blog";
+    }
+
+    //加载3篇最新博客
+    @GetMapping("/foot/newBlogs")
+    public String newBlogs(Model model){
+        List<Blog> blogs = blogService.listBlogRecommendTop(3);
+        model.addAttribute("blogs", blogs);
+        return "/common/front_fragment::newBlogs";
     }
 }

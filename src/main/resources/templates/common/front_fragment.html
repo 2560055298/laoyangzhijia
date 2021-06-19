@@ -16,28 +16,28 @@
 
     <body>
         <!--导航栏-->
-        <nav th:fragment="nav(choose)" class="ui inverted attached  segment m-padded-tb-mini">
+        <nav th:fragment="nav(choose)" class="ui inverted attached  segment m-padded-tb-mini padding-LR-zero">
             <div class="ui container">
                 <div class="ui inverted secondary menu stackable">
-                    <h2 class="ui teal header item">老洋之家</h2>
+                    <h2 class="ui header item" style="font-family: FZShuTi; padding: 0px; margin: 2px; font-size: 34px; color:#89cce1;">老洋之家&nbsp;</h2>
                     <a th:href="@{/}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 1} ? 'active'"><i class="home icon"></i>首页</a>
                     <a th:href="@{/types/-1}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 2} ? 'active'"><i class="idea icon"></i>分类</a>
                     <a th:href="@{/tags/-1}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 3} ? 'active'"><i class="tag icon"></i>标签</a>
                     <a th:href="@{/archives}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 4} ? 'active'"><i class="clone icon"></i>归档</a>
                     <a th:href="@{/about}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 5} ? 'active'"><i class="info icon"></i>关于我</a>
+                    <a th:href="@{/admin}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 6} ? 'active'"><i class="user circle icon"></i>登录</a>
 
-                    <div class="right m-item item">
+                    <div class="right m-item item m-mobile-hide">
                         <form name="search" th:action="@{/search}" method="post" target="_blank">
-                            <div class="ui input icon m-mobile-hide">
-                                <input type="text" name="query" placeholder="Search..." th:value="${query}">
+                            <div class="ui input icon">
+                                <input class="search-redis" type="text" name="query" placeholder="Search..." th:value="${query}">
                                 <i onclick="document.forms['search'].submit()" class="search icon link "></i>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
-            <a href="#" class="ui menu toggle black icon button m-top-right m-mobile-show">
+            <a href="#" class="ui menu toggle black icon button m-top-right m-mobile-show" style="margin-top: 0;">
                 <i class="sidebar icon"></i>
             </a>
         </nav>
@@ -45,6 +45,7 @@
         <!--底部footer-->
         <footer th:fragment="footer" class="ui vertical inverted segment m-padded-tb">
             <div class="ui center aligned container">
+                <!--/*-->
                 <div class="ui inverted divided stackable m-margin-top grid ">
                     <div class="three wide column">
                         <div class="ui inverted link list">
@@ -55,17 +56,19 @@
                     </div>
                     <div class="three wide column">
                         <h4 class="ui inverted header m-text-spaced m-opacity-mini">最新博客</h4>
-                        <div class="ui inverted link list">
-                            <a href="#" class="item">老洋自传</a>
-                            <a href="#" class="item">论生活</a>
-                            <a href="#" class="item">谈青春</a>
+
+                        <div id="container_newBlog">
+                            <div class="ui inverted link list" th:fragment="newBlogs">
+                                <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item" th:each="blog:${blogs}" th:text="${blog.title}">老洋自传</a>
+                            </div>
                         </div>
+
                     </div>
                     <div class="three wide column">
                         <h4 class="ui inverted header m-text-spaced m-opacity-mini">联系方式</h4>
                         <div class="ui inverted link list ">
-                            <a href="#" class="item">laoyangzhijia@aliyun.com</a>
-                            <a href="#" class="item">QQ: 2560055298</a>
+                            <a href="#" class="item" th:text="#{email}">laoyangzhijia@aliyun.com</a>
+                            <a href="#" class="item" th:text="|QQ：#{qq}|">QQ: 2560055298</a>
                         </div>
                     </div>
 
@@ -79,7 +82,11 @@
                 </div>
                 <!--分割线-->
                 <div class="ui inverted section divider" ></div>
+                <!--*/-->
+                <br>
                 <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright ©1997 - 2021 老洋之家</p>
+                <p class="m-text-thin m-text-spaced m-opacity-tiny">湘ICP备2021005178号-2</p>
+
             </div>
         </footer>
 
@@ -94,6 +101,10 @@
             <script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.3/jquery.scrollTo.min.js"></script>
             <script src="../static/lib/waypoint/jquery.waypoints.js" th:src="@{/lib/waypoint/jquery.waypoints.js}"></script> <!--滚动监测-->
             <script src="/static/lib/editormd/editormd.js" th:src="@{/lib/editormd/editormd.js}"></script>
+
+            <script>
+                $("#container_newBlog").load(/*[[@{/foot/newBlogs}]]*/"/foot/newBlogs")
+            </script>
         </div>
     </body>
 

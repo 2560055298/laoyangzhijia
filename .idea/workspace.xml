@@ -50,7 +50,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/images" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -58,16 +58,16 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\static\images" />
+      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\static" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates\admin" />
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\admin" />
-      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\templates\error" />
-      <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\IntelliJ IDEA\InterlliJ-Source\springboot\laoyangzhijia\src\main\resources\static" />
@@ -178,7 +178,12 @@
       <workItem from="1623824477438" duration="14978000" />
       <workItem from="1623887025228" duration="4904000" />
       <workItem from="1623897040686" duration="3613000" />
-      <workItem from="1623911505799" duration="3455000" />
+      <workItem from="1623911505799" duration="16778000" />
+      <workItem from="1623972486705" duration="3735000" />
+      <workItem from="1623982287642" duration="3995000" />
+      <workItem from="1623997391395" duration="12422000" />
+      <workItem from="1624057566087" duration="15499000" />
+      <workItem from="1624083146432" duration="18364000" />
     </task>
     <servers />
   </component>
@@ -190,12 +195,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/templates/archives.html</url>
-          <line>75</line>
+          <line>66</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/templates/blog.html</url>
-          <line>556</line>
+          <line>559</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

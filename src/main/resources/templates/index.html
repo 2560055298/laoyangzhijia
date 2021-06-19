@@ -11,74 +11,65 @@
     </head>
 
 
-    <body>
+    <body class="bg-front" >
         <!--导航栏-->
         <div>
             <nav th:replace="~{common/front_fragment::nav(1)}"></nav>
         </div>
 
         <!--中间内容-->
-        <div class="m-container m-padded-tb-big">
+        <div class="m-opacity m-container-middle m-padded-tb-big">
             <div class="ui container">  <!--拥有：响应式的效果-->
                 <div class="ui stackable grid">
                     <!--左边：博客列表-->
-                    <div class="eleven wide column">
-                        <!--header-->
-                        <div class="ui top attached segment ">
-                            <div class="ui middle aligned two column grid">
-                                <div class="column">
-                                    <h3 class="ui teal header">博客</h3>
-                                </div>
-
-                                <div class="right aligned column">
-                                    共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${page.totalElements}"> 14 </h2> 篇
-                                </div>
-                            </div>
+                    <div class="wide column">
+                        <div class="ui segment center aligned m-padded-tb-small title-front-bg">
+                            <span class="span-front-font">热文推荐：</span>
+                            <span class="span-front-num" th:text="${page.totalElements}">16篇</span> <span class="span-front-font">篇</span>
                         </div>
 
                         <!--左边博客：中间content-->
-                        <div class="ui  teal attached  segment">
-                            <div th:each="blog : ${page.content}" class="ui padded padded-lr-big vertical m-padded-tb-large  m-mobile-clear segment">
+                        <div class="ui segment title-front-redius" th:each="blog : ${page.content}">
+                            <div class="ui padded-lr-big vertical m-padded-tb-small  m-mobile-clear segment">
                                 <div class="ui middle aligned mobile reversed stackable grid">
-                                    <div class="eleven wide column">
-                                        <h3 class="ui header"><a class="m-black" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}"></a></h3>
-                                        <p class="m-text" th:text="|${blog.description}...|">
-                                            随着岁月的境迁, 同学们的差距会越来越来大？这是什么原因呢？ 很大程度上，读书阶段就已经造就了这种局面。
-                                            我想这便是自我约束力的丧失。导致生活任意妄为， 浑浑噩噩，每天混迹于
+                                    <div class="eleven wide column m-padded-tb-small">
+                                        <div class="title-header m-margin-bottom-middle"><a class="m-black" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}"></a></div>
+                                        <p class="m-text m-margin-top-larger-px" th:text="|${blog.description}...|">
+                                                随着岁月的境迁, 同学们的差距会越来越来大？这是什么原因呢？ 很大程度上，读书阶段就已经造就了这种局面。
+                                                我想这便是自我约束力的丧失。导致生活任意妄为， 浑浑噩噩，每天混迹于
                                         </p>
-                                        <div class="ui  stackable grid">
+
+                                        <div class="ui m-margin-top-larger-px grid">
                                             <div class="eleven wide column">
                                                 <div class="ui mini horizontal link list">
                                                     <div class="item">
-                                                        <img th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
-                                                        <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}">何锦洋</a></div>
+                                                        <img src="/images/avatar.jpg" th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
+                                                        <div class="content"><a href="/about" target="_blank" class="header" th:text="${blog.user.nickname}">洋洋洋</a></div>
                                                     </div>
-
                                                     <div class="item">
-                                                        <i class="calendar alternate outline icon"></i> <span th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd HH:mm')}"></span>
+                                                        <i class="calendar icon"></i><span th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd HH:mm')}">2021-03-02</span>
                                                     </div>
-
                                                     <div class="item">
-                                                        <i class="eye icon"></i> <span th:text="${blog.views}"></span>
+                                                        <i class="eye icon"></i> <span th:text="${blog.views}">477</span>
+                                                    </div>
+                                                    <div class="item">
+                                                        <i class="comment outline icon"></i> <span>5</span>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="five wide column right aligned" >
-                                                <a href="#" target="_blank" class="ui teal label basic m-text-thin m-padded-tiny" th:text="${blog.type.name}">思辨人生</a>
+                                            <div class="right aligned five wide column">
+                                                <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin font-spacing" th:text="${blog.type.name}">框架底层原理</a>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="five wide column">
-                                        <a href="#" target="_blank">
+                                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
                                             <img th:src="@{${blog.firstPicture}}" alt="" class="ui rounded image">
                                         </a>
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
 
                         <!--footer-->
@@ -95,6 +86,7 @@
                         </div>
                     </div>
 
+                    <!--/*-->
                     <!--右边：博客列表-->
                     <div class="five wide column">
                         <div class="ui segments">
@@ -106,7 +98,7 @@
                                     </div>
 
                                     <div class="column right aligned">
-                                        <a href="#" target="_blank">
+                                        <a href="#" th:href="@{/types/-1}" target="_blank">
                                             more <i class="angle double right icon"></i>
                                         </a>
                                     </div>
@@ -115,7 +107,7 @@
                             <!--框内容：分类详情-->
                             <div class="ui teal segment">
                                 <div class="ui fluid vertical menu">
-                                    <a th:each="type : ${types}" href="" class="item" target="_blank">
+                                    <a th:each="type : ${types}" href="" th:href="@{/types/{id}(id=${type.id})}" class="item" target="_blank">
                                         [[${type.name}]]
                                         <div class="ui teal basic left pointing label" th:text="${#lists.size(type.blogs)}">18</div>
                                     </a>
@@ -132,7 +124,7 @@
                                     </div>
 
                                     <div class="column right aligned">
-                                        <a href="#" target="_blank">
+                                        <a href="#" th:href="@{/tags/-1}" target="_blank">
                                             more <i class="angle double right icon"></i>
                                         </a>
                                     </div>
@@ -141,7 +133,7 @@
 
                             <!--标签内容-->
                             <div class="ui teal segment">
-                                <a th:each="tag : ${tags}" href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                <a th:each="tag : ${tags}" href="#" th:href="@{/tags/{id}(id=${tag.id})}" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
                                      [[${tag.name}]]
                                      <div class="detail" th:text="${#lists.size(tag.blogs)}">23</div>
                                 </a>
@@ -157,22 +149,14 @@
 
 
                             <div class="ui segment" th:each="blog : ${recomments}">
-                                <a th:href="@{/blog/{id}(id=${blog.id})}" target="" class="m-black m-text-thin" th:text="${blog.title}">老洋说（Lao Yang Story）</a>
+                                <a th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black m-text-thin" th:text="${blog.title}">老洋说（Lao Yang Story）</a>
                             </div>
 
                         </div>
-
-                        <!--二维码-->
-                        <h4 class="ui horizontal divider header m-margin-top-larger">扫码关注我</h4>
-                        <div class="ui centered card " style="width:11em">
-                            <img src="../static/images/wechat.png" th:src="@{/images/wechat.png}" class="ui rounded image" alt="">
-                        </div>
-
-
                     </div>
+                    <!--*/-->
             </div>
         </div>
-
         </div>
 
         <!--底部footer-->

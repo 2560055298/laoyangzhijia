@@ -14,7 +14,7 @@
         <title>博客详情</title>
     </head>
 
-    <body>
+    <body class="bg-front">
         <!--导航栏-->
         <nav th:replace="/common/front_fragment::nav(0)" class="ui inverted attached  segment m-padded-tb-mini">
             <div class="ui  container">
@@ -40,7 +40,7 @@
         </nav>
 
         <!--中间内容-->
-        <div id="waypoint" class="m-container-small m-padded-tb-big">
+        <div id="waypoint" class="m-container-small m-padded-tb-big mybody">
             <div class="ui container">
                 <!--文章：头像、作者名、发表时间-->
                 <div class="ui top attached  segment">
@@ -490,31 +490,34 @@ h5,h6{font-size:1em;}
                         <div class="ui left pointing teal basic label" th:each="tag : ${blog.tags}" th:text="${tag.name}">方法论</div>
                     </div>
 
-                    <!--赞赏-->
-                    <div class="ui center aligned basic segment">
-                        <div id="payButton" class="ui orange circular basic button">赞赏</div>
-                    </div>
+                    <div th:if="${blog.appreciation}">
+                        <!--赞赏-->
+                        <div class="ui center aligned basic segment">
+                            <div id="payButton" class="ui orange circular basic button">赞赏</div>
+                        </div>
 
-                    <!--支付宝、微信图片-->
-                    <div class="ui payQ flowing popup transition hidden">
-                        <div class="ui orange basic label">
-                            <div class="ui images" style="font-size: inherit !important;">
-                                <div class="image">
-                                    <img src="../static/images/wechat.png" th:src="@{/images/wechat.png}" style="width:110px" alt="" class="ui centered rounded image">
-                                    <div style="text-align: center">支付宝</div>
-                                </div>
+                        <!--支付宝、微信图片-->
+                        <div class="ui payQ flowing popup transition hidden">
+                            <div class="ui orange basic label">
+                                <div class="ui images" style="font-size: inherit !important;">
+                                    <div class="image">
+                                        <img src="../static/images/wechat.png" th:src="@{/images/wechat.png}" style="width:110px" alt="" class="ui centered rounded image">
+                                        <div style="text-align: center">支付宝</div>
+                                    </div>
 
-                                <div class="image">
-                                    <img src="../static/images/wechat.png" th:src="@{/images/wechat.png}" style="width:110px" alt="" class="ui centered rounded image">
-                                    <div style="text-align: center">微信</div>
+                                    <div class="image">
+                                        <img src="../static/images/wechat.png" th:src="@{/images/wechat.png}" style="width:110px" alt="" class="ui centered rounded image">
+                                        <div style="text-align: center">微信</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <!--文章：版权归属-->
-                <div class="ui attached positive message">
+                <div class="ui attached positive message" th:if="${blog.shareStatement}">
                     <!--博客信息-->
                     <div class="ui grid">
                         <div class="eleven wide column">
@@ -534,7 +537,7 @@ h5,h6{font-size:1em;}
                 </div>
 
                 <!--留言区域-->
-                <div class="ui bottom attached segment">
+                <div class="ui bottom attached segment" th:if="${blog.commentabled}">
                     <!--留言区列表-->
                     <div id="comment-container" class="ui teal segment">
                         <div th:fragment="commentList">
@@ -542,7 +545,7 @@ h5,h6{font-size:1em;}
                                 <h3 class="ui dividing header">评论</h3>
                                 <div class="comment" th:each="comment: ${comments}">
                                     <a class="avatar" >
-                                        <img src="../static/images/img.png" th:src="@{${comment.avatar}}">
+                                        <img src="../static/images/background.png" th:src="@{${comment.avatar}}">
                                     </a>
                                     <div class="content">
                                         <a class="author">
@@ -559,7 +562,7 @@ h5,h6{font-size:1em;}
 
                                         <div class="comment" th:each="replyComment: ${comment.replyComments}">
                                             <a class="avatar" >
-                                                <img src="../static/images/img.png" th:src="@{${replyComment.avatar}}">
+                                                <img src="../static/images/background.png" th:src="@{${replyComment.avatar}}">
                                             </a>
                                             <div class="content">
                                                 <a class="author">
@@ -819,7 +822,7 @@ h5,h6{font-size:1em;}
 
         //将：数据进行回调
         function postData() {
-            $("#comment-container").load(/*[[@{/comments}]]*/"", {
+            $("#comment-container").load(/*[[@{/comments}]]*/"/comments", {
                     "parentComment.id" : $("[name='parentComment.id']").val(),
                     "blog.id" : $("[name='blog.id']").val(),
                     "nickname" : $("[name='nickname']").val(),

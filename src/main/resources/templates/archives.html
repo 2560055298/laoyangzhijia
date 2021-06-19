@@ -10,53 +10,44 @@
         <title>归档页面</title>
     </head>
 
-    <body>
+    <body class="bg-front">
         <!--导航栏-->
         <div>
             <nav th:replace="~{common/front_fragment::nav(4)}"></nav>
         </div>
 
         <!--中间内容-->
-        <div class="m-container-small m-padded-tb-big">
+        <div class="m-container-small m-padded-tb-big m-opacity">
             <!--归档内容-->
             <div class="ui container">  <!--拥有：响应式的效果-->
                 <!--归档的博客数目-->
-                <div class="ui top attached segment ">
+                <div class="ui top attached segment title-front-redius title-front-arch">
                     <div class="ui middle aligned two column grid">
                         <div class="column">
-                            <h3 class="ui teal header">归档</h3>
+                            <span class="span-front-font">归档</span>
                         </div>
 
                         <div class="right aligned column">
-                            共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${#arrays.length(blogs)}"> 142 </h2> 篇归档博客
+                            <span class="span-front-font">共</span> <span class="span-front-num" th:text="${blogCount}"> 142 </span> <span class="span-front-font">篇</span>
                         </div>
                     </div>
                 </div>
 
                 <!--归档时间（及）文章-->
-                <h2 class="ui center aligned header">2021</h2>
-                <div class="ui fluid vertical menu">
-                    <a href="" th:href="@{/blog/{id}(id=${blog.id})}" class="item" th:each="blog : ${blogs}" th:if="${#dates.format(blog.createTime, 'yyyy') == '2021'}">
+                <th:block th:each="item : ${maps}">
+                    <h2 class="ui center aligned header" th:each="year : ${item.key}" th:text="${year}">2021</h2>
+                    <div class="ui fluid vertical menu" th:each="blogs : ${item.value}">
+                        <a href="" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item" th:each="blog : ${blogs}">
                         <span>
                              <i class="mini teal circle icon"></i>&nbsp;&nbsp;[[${blog.title}]]
                              <div class="ui teal basic left pointing label m-padded-tiny" th:text="${#dates.format(blog.createTime, 'MM月dd日')}"></div>
                         </span>
 
-                        <div class="ui orange basic label m-padded-big" th:text="${blog.flag}">原创</div>
-                    </a>
-                </div>
+                            <div class="ui orange basic label m-padded-big" th:text="${blog.flag}">原创</div>
+                        </a>
+                    </div>
+                </th:block>
 
-                <h2 class="ui center aligned header">2020</h2>
-                <div class="ui fluid vertical menu">
-                    <a href="" th:href="@{/blog/{id}(id=${blog.id})}" class="item" th:each="blog : ${blogs}" th:if="${#dates.format(blog.createTime, 'yyyy') == '2020'}">
-                        <span>
-                             <i class="mini teal circle icon"></i>&nbsp;&nbsp;[[${blog.title}]]
-                             <div class="ui teal basic left pointing label m-padded-tiny" th:text="${#dates.format(blog.createTime, 'MM月dd日')}"></div>
-                        </span>
-
-                        <div class="ui orange basic label m-padded-big" th:text="${blog.flag}">原创</div>
-                    </a>
-                </div>
             </div>
         </div>
 
