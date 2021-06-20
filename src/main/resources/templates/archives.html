@@ -21,7 +21,7 @@
             <!--归档内容-->
             <div class="ui container">  <!--拥有：响应式的效果-->
                 <!--归档的博客数目-->
-                <div class="ui top attached segment title-front-redius title-front-arch">
+                <div class="ui top attached segment title-front-radius title-front-arch">
                     <div class="ui middle aligned two column grid">
                         <div class="column">
                             <span class="span-front-font">归档</span>
@@ -36,14 +36,14 @@
                 <!--归档时间（及）文章-->
                 <th:block th:each="item : ${maps}">
                     <h2 class="ui center aligned header" th:each="year : ${item.key}" th:text="${year}">2021</h2>
-                    <div class="ui fluid vertical menu" th:each="blogs : ${item.value}">
+                    <div class="ui fluid vertical menu" th:each="blogs : ${item.value}" id="MyArchStripe">
                         <a href="" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item" th:each="blog : ${blogs}">
                         <span>
-                             <i class="mini teal circle icon"></i>&nbsp;&nbsp;[[${blog.title}]]
-                             <div class="ui teal basic left pointing label m-padded-tiny" th:text="${#dates.format(blog.createTime, 'MM月dd日')}"></div>
+                             <i class="mini paper plane outline icon icon-color"></i>&nbsp;&nbsp;[[${blog.title}]]
+                             <div class="ui teal basic left pointing label m-padded-tiny font-spacing" th:text="${#dates.format(blog.createTime, 'MM月dd日')}"></div>
                         </span>
 
-                            <div class="ui orange basic label m-padded-big" th:text="${blog.flag}">原创</div>
+                            <div class="ui blue  basic label m-padded-big font-spacing" th:text="${blog.flag}">原创</div>
                         </a>
                     </div>
                 </th:block>

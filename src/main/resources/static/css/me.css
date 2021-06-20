@@ -1,5 +1,4 @@
 
-
 .m-padded-mini{
     padding: 0.2em !important;
 }
@@ -247,6 +246,17 @@ i.icon.tag:before {
     width: 100%;
 }
 
+/*后端: 清莲（背景）*/
+.bg-end{
+    background-image: url("/images/background_login.png") !important;
+    background-attachment: fixed;
+    background-size: 100%;
+    no-repeat: center top;
+    font: 14px/1.5 Tahoma,Helvetica,Arial,'宋体',sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
 /*前端：span字体样式*/
 .span-front-font {
     font-size: 19px !important;
@@ -278,6 +288,14 @@ i.icon.tag:before {
     border-right: #00ffed87 !important;
 }
 
+/*前端搜索：背景色*/
+.search-front-bg{
+    background-color: #FFDEE9 !important;
+    background-image: linear-gradient(270deg, #FFDEE9 0%, #B5FFFC 100%) !important;
+
+
+}
+
 /*前端归档：背景色*/
 .title-front-arch{
     background-color: #FFFFFF !important;
@@ -287,12 +305,8 @@ i.icon.tag:before {
     border-right: #ffd3dd85 !important;
 }
 
-element.style {
-
-}
-
 /*前端文章边框：幅度*/
-.title-front-redius{
+.title-front-radius{
     border-radius: 7px !important;
 }
 
@@ -308,10 +322,54 @@ element.style {
 
 /*文章标题*/
 .title-header{
-    font-size: 22px;
-    font-weight: 600;
-    font-family: cursive;
-    letter-spacing: 2px;
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    font-family: cursive !important;
+    letter-spacing: 2px !important;
 }
+
+
+/*归档页面（icon）: 颜色*/
+.icon-color{
+    color: lightpink !important;
+}
+
+/*归档页面(条目)：触摸伪类*/
+#MyArchStripe:hover{
+    background-color: floralwhite !important;
+}
+
+
+
+/*后台登录页面：标题*/
+.title-header-end{
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    font-family: cursive !important;
+    color: #ffc8e6 !important;
+    letter-spacing: 2px !important;
+}
+
+
+/*后台登录页面：按钮*/
+.login-btn-end{
+    /*background-color: #8c8c8c !important;*/
+    background-color: #84caf7 !important;
+}
+
+/*触摸：登录按钮*/
+.login-btn-end:hover{
+    /*background-color: #272727 !important;*/
+    background-color: #4cb3f5 !important
+}
+
+/*登录按钮：文本*/
+.login-text-btn{
+    font-family: cursive !important;
+    font-size: 18px !important;
+}
+
+
+
 
 

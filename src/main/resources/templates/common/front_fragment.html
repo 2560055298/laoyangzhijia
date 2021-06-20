@@ -25,7 +25,7 @@
                     <a th:href="@{/tags/-1}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 3} ? 'active'"><i class="tag icon"></i>标签</a>
                     <a th:href="@{/archives}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 4} ? 'active'"><i class="clone icon"></i>归档</a>
                     <a th:href="@{/about}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 5} ? 'active'"><i class="info icon"></i>关于我</a>
-                    <a th:href="@{/admin}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 6} ? 'active'"><i class="user circle icon"></i>登录</a>
+                    <a th:href="@{/admin}" target="_blank" class="mini m-item item m-mobile-hide" th:classappend="${choose == 6} ? 'active'"><i class="user circle icon"></i>登录</a>
 
                     <div class="right m-item item m-mobile-hide">
                         <form name="search" th:action="@{/search}" method="post" target="_blank">
@@ -101,7 +101,6 @@
             <script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.3/jquery.scrollTo.min.js"></script>
             <script src="../static/lib/waypoint/jquery.waypoints.js" th:src="@{/lib/waypoint/jquery.waypoints.js}"></script> <!--滚动监测-->
             <script src="/static/lib/editormd/editormd.js" th:src="@{/lib/editormd/editormd.js}"></script>
-
             <script>
                 $("#container_newBlog").load(/*[[@{/foot/newBlogs}]]*/"/foot/newBlogs")
             </script>
