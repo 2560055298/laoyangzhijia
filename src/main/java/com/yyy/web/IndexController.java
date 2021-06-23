@@ -48,8 +48,7 @@ public class IndexController {
     //跳转：全局查询页面
     @PostMapping("/search")
     public String search(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC)
-                                     Pageable pageable, String query ,Model model){
-
+        Pageable pageable, String query ,Model model){
         model.addAttribute("page", blogService.listBlog("%"+query+"%", pageable));
         model.addAttribute("query",query);
         return "/search";

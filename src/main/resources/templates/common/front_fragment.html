@@ -9,11 +9,10 @@
         <!--中文排版：css-->
         <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}"/>
         <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}"/>
-        <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}"/>
+        <link rel="stylesheet" href="../static/lib/prism/prism5.css" th:href="@{/lib/prism/prism.css}"/>
         <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}"/>
         <title th:text="${myTitle}">博客详情</title>
     </head>
-
     <body>
         <!--导航栏-->
         <nav th:fragment="nav(choose)" class="ui inverted attached  segment m-padded-tb-mini padding-LR-zero">
@@ -22,7 +21,7 @@
                     <h2 class="ui header item" style="font-family: FZShuTi; padding: 0px; margin: 2px; font-size: 34px; color:#89cce1;">老洋之家&nbsp;</h2>
                     <a th:href="@{/}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 1} ? 'active'"><i class="home icon"></i>首页</a>
                     <a th:href="@{/types/-1}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 2} ? 'active'"><i class="idea icon"></i>分类</a>
-                    <a th:href="@{/tags/-1}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 3} ? 'active'"><i class="tag icon"></i>标签</a>
+<!--                    <a th:href="@{/tags/-1}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 3} ? 'active'"><i class="tag icon"></i>标签</a>-->
                     <a th:href="@{/archives}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 4} ? 'active'"><i class="clone icon"></i>归档</a>
                     <a th:href="@{/about}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 5} ? 'active'"><i class="info icon"></i>关于我</a>
                     <a th:href="@{/admin}" target="_blank" class="mini m-item item m-mobile-hide" th:classappend="${choose == 6} ? 'active'"><i class="user circle icon"></i>登录</a>
@@ -94,7 +93,7 @@
         <div th:fragment="myJs">
             <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-            <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>   <!--代码高亮-->
+            <script src="../static/lib/prism/prism3.js" th:src="@{/lib/prism/prism.js}"></script>   <!--代码高亮-->
             <script src="../static/lib/tocbot/tocbot.js" th:src="@{/lib/tocbot/tocbot.js}"></script> <!--目录生成-->
             <script src="../static/lib/qrcode/qrcode.js" th:src="@{/lib/qrcode/qrcode.js}"></script> <!--文章二维码-->
             <!--跳转顶部：延时-->
