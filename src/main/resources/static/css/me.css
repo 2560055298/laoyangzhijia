@@ -1,4 +1,3 @@
-
 .m-padded-mini{
     padding: 0.2em !important;
 }
@@ -7,12 +6,20 @@
     padding: 0.3em !important;
 }
 
+.m-padded-little{
+    padding: 0.5em !important;
+}
+
 .m-padded{
-    padding: 1em !important;
+    padding: 2em !important;
 }
 
 .m-padded-big{
-    padding: 0.5em !important;
+    padding: 1.5em !important;
+}
+
+.m-padded-large{
+    padding: 3em !important;
 }
 
 .padded-lr-big{
@@ -145,7 +152,7 @@
 
 /*------container------*/
 .m-container{
-    max-width: 72em !important;
+    max-width: 74em !important;
     margin: auto !important;
 }
 
@@ -156,6 +163,11 @@
 
 .m-container-middle{
     max-width: 65em !important;
+    margin: auto !important;
+}
+
+.m-container-big{
+    max-width: 80em !important;
     margin: auto !important;
 }
 
@@ -228,6 +240,7 @@
         padding-right: 0.1em !important;
     }
 
+    /*手机端：目录消失*/
     #myCatalogue{
         display: none !important;
     }
@@ -260,6 +273,14 @@ i.icon.tag:before {
     opacity: 0.8 !important;
 }
 
+.m-opacity-big {
+    opacity: 0.9 !important;
+}
+
+.m-opacity-larger {
+    opacity: 95% !important;
+}
+
 /*前端：竹林芳草（背景）*/
 .bg-front{
     background-image: url("/images/background.png") !important;
@@ -281,6 +302,18 @@ i.icon.tag:before {
     height: 100%;
     width: 100%;
 }
+
+/*blog背景图片*/
+.bg-blog{
+    background-image: url("/images/background_blog.png") !important;
+    background-attachment: fixed;
+    background-size: 100%;
+    no-repeat: center top;
+    font: 14px/1.5 Tahoma,Helvetica,Arial,'宋体',sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
 
 /*前端：span字体样式*/
 .span-front-font {
@@ -334,6 +367,7 @@ i.icon.tag:before {
 .title-front-radius{
     border-radius: 7px !important;
 }
+
 
 /*头：圆角*/
 .redius-top {
@@ -420,5 +454,9 @@ i.icon.tag:before {
 }
 
 
+/*备案触摸*/
+.police:hover{
+    color: pink !important;
+}
 
 

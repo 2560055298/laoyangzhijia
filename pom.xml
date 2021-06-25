@@ -95,6 +95,38 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>woff</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>woff2</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>eot</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>svg</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
         </plugins>
+
+        <resources>
+                <resource>
+                    <directory>${project.basedir}/src/main/resources</directory>
+                    <filtering>true</filtering>
+                    <excludes>
+                        <exclude>static/**</exclude>
+                    </excludes>
+                </resource>
+                <resource>
+                    <directory>${project.basedir}/src/main/resources</directory>
+                    <filtering>false</filtering>
+                    <includes>
+                        <include>static/**</include>
+                    </includes>
+                </resource>
+        </resources>
+
     </build>
 </project>

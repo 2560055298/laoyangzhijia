@@ -20,11 +20,11 @@
 .toc-list li a{
     display: block;
     padding: 4px 0;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 .toc-list li a:hover{
-    color: #00B5AD;
+    color: cornflowerblue;
 }
 
 a.toc-link {
@@ -49,7 +49,7 @@ a.toc-link {
 
 .is-active-link {
     font-weight: 700;
-    color: #00B5AD !important;
+    color: cornflowerblue !important;
 }
 
 .toc-link::before {

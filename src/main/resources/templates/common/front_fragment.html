@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <!--移动端的：缩放-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" th:href="@{/css/semantic.css}">
         <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
         <!--中文排版：css-->
         <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}"/>
@@ -84,7 +84,12 @@
                 <!--*/-->
                 <br>
                 <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright ©1997 - 2021 老洋之家</p>
-                <p class="m-text-thin m-text-spaced m-opacity-tiny">湘ICP备2021005178号-2</p>
+
+                <div class="ui padded-lr-big vertical m-padded-tb-small  m-mobile-clear">
+                    <img src="/img/new/gongan.png" th:src="@{/images/gongan.png}" style="vertical-align: sub; width: 18px">
+                    <span style="color: #969797 !important;">湘公网安备 43112502431136号</span>
+                    <a class="police" href="http://beian.miit.gov.cn" target="_blank" style="color: #969797;">湘ICP备2021005178号-2</a>
+                </div>
 
             </div>
         </footer>
@@ -92,7 +97,7 @@
         <!--引入js-->
         <div th:fragment="myJs">
             <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" th:src="@{/js/semantic.js}"></script>
             <script src="../static/lib/prism/prism3.js" th:src="@{/lib/prism/prism.js}"></script>   <!--代码高亮-->
             <script src="../static/lib/tocbot/tocbot.js" th:src="@{/lib/tocbot/tocbot.js}"></script> <!--目录生成-->
             <script src="../static/lib/qrcode/qrcode.js" th:src="@{/lib/qrcode/qrcode.js}"></script> <!--文章二维码-->
