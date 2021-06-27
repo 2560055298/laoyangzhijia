@@ -18,7 +18,7 @@
         <nav th:fragment="nav(choose)" class="ui inverted attached  segment m-padded-tb-mini padding-LR-zero">
             <div class="ui container">
                 <div class="ui inverted secondary menu stackable">
-                    <h2 class="ui header item" style="font-family: FZShuTi; padding: 0px; margin: 2px; font-size: 34px; color:#89cce1;">老洋之家&nbsp;</h2>
+                    <h2 class="ui header item" style="font-family: FZShuTi; padding: 0 !important; margin: 2px; font-size: 34px; color:#89cce1;">老洋之家&nbsp;</h2>
                     <a th:href="@{/}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 1} ? 'active'"><i class="home icon"></i>首页</a>
                     <a th:href="@{/types/-1}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 2} ? 'active'"><i class="idea icon"></i>分类</a>
 <!--                    <a th:href="@{/tags/-1}" class="mini m-item item m-mobile-hide" th:classappend="${choose == 3} ? 'active'"><i class="tag icon"></i>标签</a>-->
@@ -42,55 +42,15 @@
         </nav>
 
         <!--底部footer-->
-        <footer th:fragment="footer" class="ui vertical inverted segment m-padded-tb">
+        <footer th:fragment="footer" class="ui vertical inverted segment m-padded-tb-small-top">
             <div class="ui center aligned container">
-                <!--/*-->
-                <div class="ui inverted divided stackable m-margin-top grid ">
-                    <div class="three wide column">
-                        <div class="ui inverted link list">
-                            <div class="item">
-                                <img src="../static/images/wechat.png" th:src="@{/images/wechat.png}" class="ui rounded image" alt="" style="width:110px">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="three wide column">
-                        <h4 class="ui inverted header m-text-spaced m-opacity-mini">最新博客</h4>
-
-                        <div id="container_newBlog">
-                            <div class="ui inverted link list" th:fragment="newBlogs">
-                                <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item" th:each="blog:${blogs}" th:text="${blog.title}">老洋自传</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="three wide column">
-                        <h4 class="ui inverted header m-text-spaced m-opacity-mini">联系方式</h4>
-                        <div class="ui inverted link list ">
-                            <a href="#" class="item" th:text="#{email}">laoyangzhijia@aliyun.com</a>
-                            <a href="#" class="item" th:text="|QQ：#{qq}|">QQ: 2560055298</a>
-                        </div>
-                    </div>
-
-                    <div class="seven wide column">
-                        <h4 class="ui inverted header m-text-spaced m-opacity-mini">关于我</h4>
-                        <p class="m-text-thin m-text-spaced m-opacity-mini">
-                            这是老洋成长的地方, 分享着老洋成长历程的点点滴滴。
-                            这儿带给了老洋许多人生的欢乐。
-                        </p>
-                    </div>
-                </div>
-                <!--分割线-->
-                <div class="ui inverted section divider" ></div>
-                <!--*/-->
-                <br>
-                <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright ©1997 - 2021 老洋之家</p>
+                <div class="m-text-thin m-text-spaced m-opacity-tiny">Copyright ©1997 - 2021 老洋之家</div>
 
                 <div class="ui padded-lr-big vertical m-padded-tb-small  m-mobile-clear">
                     <img src="/img/new/gongan.png" th:src="@{/images/gongan.png}" style="vertical-align: sub; width: 18px">
                     <span style="color: #969797 !important;">湘公网安备 43112502431136号</span>
                     <a class="police" href="http://beian.miit.gov.cn" target="_blank" style="color: #969797;">湘ICP备2021005178号-2</a>
                 </div>
-
             </div>
         </footer>
 

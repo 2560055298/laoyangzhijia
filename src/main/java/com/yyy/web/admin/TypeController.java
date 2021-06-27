@@ -46,7 +46,7 @@ public class TypeController {
         Page<Type> types = typeService.listType(pageable);
 
         model.addAttribute("page", types);
-        return "/admin/types";
+        return "admin/types";
     }
 
     /**
@@ -56,7 +56,7 @@ public class TypeController {
     @GetMapping("/input")
     public String input(Model model){
         model.addAttribute("type", new Type());
-        return "/admin/types_input";
+        return "admin/types_input";
     }
 
     /**
@@ -72,7 +72,7 @@ public class TypeController {
         }
 
         if(result.hasErrors()){
-            return "/admin/types_input";
+            return "admin/types_input";
         }
 
         Type resultType = typeService.saveType(type);
@@ -93,7 +93,7 @@ public class TypeController {
     @GetMapping("/types/{id}/input")
     public String editInput(@PathVariable Long id, Model model){
         model.addAttribute("type", typeService.getType(id));
-        return "/admin/types_input";
+        return "admin/types_input";
     }
 
     /**
@@ -109,7 +109,7 @@ public class TypeController {
         }
 
         if(result.hasErrors()){
-            return "/admin/types_input";
+            return "admin/types_input";
         }
 
         Type resultType = typeService.updateType(id, type);

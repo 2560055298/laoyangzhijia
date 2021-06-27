@@ -31,9 +31,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin")
 public class BlogController {
-    private static final String  LIST = "/admin/blogs";   //所有：文章详情路径
+    private static final String  LIST = "admin/blogs";   //所有：文章详情路径
     private static final String  REDIRECT_LIST = "redirect:/admin/blogs";  //重定向：所有文章详情页面
-    private static final String  INPUT = "/admin/blogs_input";  //新增博客页面
+    private static final String  INPUT = "admin/blogs_input";  //新增博客页面
 
     @Autowired
     private BlogService blogService;        //（博客）业务层：对象
@@ -72,7 +72,7 @@ public class BlogController {
     public String search(@PageableDefault(size = 3, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, BlogQuery blog, Model model){
         model.addAttribute("page", blogService.listBlog(pageable, blog));
         model.addAttribute("types", typeService.listType());
-        return "/admin/blogs :: blogList";
+        return "admin/blogs :: blogList";
     }
 
     /**

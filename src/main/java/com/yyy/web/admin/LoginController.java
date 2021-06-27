@@ -31,7 +31,7 @@ public class LoginController {
      */
     @GetMapping
     public String loginPage(){
-        return "/admin/login";
+        return "admin/login";
     }
 
     /**
@@ -45,7 +45,7 @@ public class LoginController {
         if(user != null){
             user.setPassword(null);
             session.setAttribute("user", user);
-            return "/admin/index";
+            return "admin/index";
         }else{
             session.setAttribute("message", "用户名或密码错误");
             return "redirect:/admin";

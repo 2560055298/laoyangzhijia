@@ -1,3 +1,7 @@
+.m-padded-zero{
+    padding: 0 !important;
+}
+
 .m-padded-mini{
     padding: 0.2em !important;
 }
@@ -8,6 +12,10 @@
 
 .m-padded-little{
     padding: 0.5em !important;
+}
+
+.m-padded-low{
+    padding: 0.6em !important;
 }
 
 .m-padded{
@@ -53,6 +61,10 @@
 .m-padded-tb-small{
     padding-top: 0.5em !important;
     padding-bottom: 0.5em !important;
+}
+
+.m-padded-tb-small-top{
+    padding-top: 1.5em !important;
 }
 
 
@@ -201,8 +213,8 @@
 }
 
 .m-right-bottom{
-    bottom: 0 !important;
-    right: 0 !important;
+    bottom: 10px !important;
+    right: 45px !important;
 }
 
 /*PC端：按钮不显示*/
@@ -248,6 +260,22 @@
     #toolbar{
         display: none !important;
     }
+
+    /*自我介绍图片：消失*/
+    .about_picture{
+        display: none !important;
+    }
+
+    /*关于我：信息居中*/
+    .about_text{
+        text-align: center !important;
+    }
+
+
+    /*透明度设置为：1*/
+    .m-phone-opacity {
+        opacity: 1.0 !important;
+    }
 }
 
 i.icon.tag:before {
@@ -270,15 +298,15 @@ i.icon.tag:before {
 }
 
 .m-opacity {
-    opacity: 0.8 !important;
+    opacity: 0.8;
 }
 
 .m-opacity-big {
-    opacity: 0.9 !important;
+    opacity: 0.9;
 }
 
 .m-opacity-larger {
-    opacity: 95% !important;
+    opacity: 95%;
 }
 
 /*前端：竹林芳草（背景）*/
@@ -429,10 +457,11 @@ i.icon.tag:before {
 }
 
 
-/*临时css*/
-.m-margin-{
-    margin-top:3em !important;
+/*评论、上拉：按钮*/
+.comment-btn-padding{
+    padding: 1.4em 0.7em 1.4em 0.7em !important;
 }
+
 
 .m-fixed {
     position: fixed !important;

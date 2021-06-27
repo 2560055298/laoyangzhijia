@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="/common/front_fragment::head(关于我)">
+    <head th:replace="common/front_fragment::head(关于我)">
         <meta charset="UTF-8" >
         <!--移动端的：缩放-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,13 +21,13 @@
         <div class="m-container-small m-padded-tb-big m-opacity">
             <div class="container">
                 <div class="ui stackable grid">
-                    <div class="ten wide column">
+                    <div class="ten wide column about_picture">
                         <div class="ui segment" style="background: aliceblue !important;">
                             <img src="https://picsum.photos/id/239/800/600" th:src="@{/images/about_img.png}" alt="" class="ui rounded image">
                         </div>
                     </div>
 
-                    <div class="six wide column">
+                    <div class="six wide column about_text">
                         <div class="ui top header attached segment">关于我</div>
 
                         <!--自我介绍-->
@@ -72,16 +72,17 @@
                     </div>
                 </div>
             </div>
+            <br/>
         </div>
 
         <br/>
         <!--底部footer-->
         <div>
-            <footer th:replace="~{/common/front_fragment::footer}"></footer>
+            <footer th:replace="~{common/front_fragment::footer}"></footer>
         </div>
 
         <!--js引用-->
-        <div th:replace="/common/front_fragment::myJs">
+        <div th:replace="common/front_fragment::myJs">
             <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
         </div>

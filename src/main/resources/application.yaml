@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: pro
 
   messages:
     basename: i18n.message

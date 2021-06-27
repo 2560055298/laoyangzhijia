@@ -6,7 +6,7 @@
         <!--移动端的：缩放-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--semantic-ui的css-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" th:href="@{/css/semantic.css}">
         <!--自定义css-->
         <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
         <!--markdown插件：css-->
@@ -16,7 +16,7 @@
 
     <body>
         <!--导航栏-->
-        <nav th:replace="~{/common/backstage_fragment :: nav(0)}" class="ui inverted attached  segment m-padded-tb-mini">
+        <nav th:replace="~{common/backstage_fragment :: nav(0)}" class="ui inverted attached  segment m-padded-tb-mini">
             <div class="ui container">
                 <div class="ui inverted secondary menu stackable">
                     <h2 class="ui teal header item">后台管理</h2>
@@ -182,7 +182,7 @@
         </div>
 
         <!--底部footer-->
-        <footer th:replace="/common/backstage_fragment::footer" class="ui vertical inverted segment m-padded-tb-massive">
+        <footer th:replace="common/backstage_fragment::footer" class="ui vertical inverted segment m-padded-tb-massive">
             <div class="ui center aligned container">
                 <div class="ui inverted divided stackable grid">
                     <div class="three wide column">
@@ -225,7 +225,7 @@
         <!-- th:replace="/common/backstage_fragment::myJs" -->
         <div >
             <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" th:src="@{/js/semantic.js}"></script>
             <script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
         </div>
     </body>

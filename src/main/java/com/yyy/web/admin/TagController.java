@@ -47,7 +47,7 @@ public class TagController {
         System.out.println("/tags ==>>" + tags);
 
         model.addAttribute("page", tags);
-        return "/admin/tags";
+        return "admin/tags";
     }
 
     /**
@@ -57,7 +57,7 @@ public class TagController {
     @GetMapping("/tags/input")
     public String input(Model model){
         model.addAttribute("tag", new Tag());
-        return "/admin/tags_input";
+        return "admin/tags_input";
     }
 
     /**
@@ -73,7 +73,7 @@ public class TagController {
         }
 
         if(result.hasErrors()){
-            return "/admin/tags_input";
+            return "admin/tags_input";
         }
 
         Tag resultTag = tagService.saveTag(tag);
@@ -94,7 +94,7 @@ public class TagController {
     @GetMapping("/tags/{id}/input")
     public String editInput(@PathVariable Long id, Model model){
         model.addAttribute("tag", tagService.getTag(id));
-        return "/admin/tags_input";
+        return "admin/tags_input";
     }
 
     /**
@@ -110,7 +110,7 @@ public class TagController {
         }
 
         if(result.hasErrors()){
-            return "/admin/tags_input";
+            return "admin/tags_input";
         }
 
         Tag resultTag = tagService.updateTag(id, tag);
