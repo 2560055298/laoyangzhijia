@@ -98,15 +98,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -322,6 +320,16 @@
       <workItem from="1624761087848" duration="1741000" />
       <workItem from="1624775187631" duration="9000" />
       <workItem from="1624775906872" duration="11721000" />
+      <workItem from="1624793518027" duration="71000" />
+      <workItem from="1624846560625" duration="4351000" />
+      <workItem from="1624854127031" duration="2313000" />
+      <workItem from="1624860166299" duration="10975000" />
+      <workItem from="1624871232531" duration="606000" />
+      <workItem from="1624872280011" duration="117000" />
+      <workItem from="1624872490634" duration="63000" />
+      <workItem from="1624873003092" duration="407000" />
+      <workItem from="1624873500868" duration="2507000" />
+      <workItem from="1624880279784" duration="553000" />
     </task>
     <servers />
   </component>
@@ -334,7 +342,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/templates/search.html</url>
           <line>105</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

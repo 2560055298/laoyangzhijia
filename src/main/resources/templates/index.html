@@ -10,15 +10,14 @@
         <title>主页</title>
     </head>
 
-
-    <body class="bg-front " >
+    <body class="bg-front">
         <!--导航栏-->
         <div>
             <nav th:replace="~{common/front_fragment::nav(1)}"></nav>
         </div>
 
         <!--中间内容-->
-        <div class="m-opacity m-container-middle m-padded-tb-big m-phone-opacity ">
+        <div style="display:none" class="m-opacity m-container-middle m-padded-tb-big m-phone-opacity ">
             <div class="ui container">  <!--拥有：响应式的效果-->
                      <!--推荐：篇目数-->
                     <div class="ui segment center aligned m-padded-tb-small title-front-bg">
@@ -88,7 +87,7 @@
         </div>
 
         <!--底部footer-->
-        <div>
+        <div id="#myFooter" style="display:none">
             <footer th:replace="~{common/front_fragment::footer}"></footer>
         </div>
 
@@ -98,6 +97,14 @@
             <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" th:src="@{/js/semantic.js}"></script>
         </div>
 
+        <script type="text/javascript">
+            //假设3秒加载完整个页面
+            window.setTimeout(function()
+            {
+                window.document.body.children[1].style.display="";
+                window.document.body.children[2].style.display="";
+            },10);
+        </script>
     </body>
 
     <script>

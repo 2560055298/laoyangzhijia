@@ -156,7 +156,6 @@
                                             <div class="actions">
                                                 <a class="reply" data-commentid='666' data-commentnickname='老洋' th:attr="data-commentid=${comment.id}, data-commentnickname=${comment.nickname}"  onclick="reply(this)">回复</a>
                                             </div>
-
                                             <div class="comment" th:each="replyComment: ${comment.replyComments}">
                                                 <a class="avatar" >
                                                     <img src="../static/images/background.png" th:src="@{${replyComment.avatar}}">
@@ -186,9 +185,14 @@
                         <div class="ui form" id="comment-form">
                             <input type="hidden" name="blog.id" th:value="${blog.id}">
                             <input type="hidden" name="parentComment.id" value="-1">
-                            <div class="field">
-                                <textarea name="content"  placeholder="请输入评论信息...."></textarea>
+
+
+                            <div class="field stackable">
+                                <textarea name="content" class="myWidth"  style="resize: none; width: 96%; padding: 17px"  placeholder="请输入评论信息...."></textarea>
                             </div>
+
+
+
                             <div class="fields">
                                 <div class="field m-mobile-wide m-margin-bottom-small">
                                     <div class="ui left icon input">

@@ -276,6 +276,11 @@
     .m-phone-opacity {
         opacity: 1.0 !important;
     }
+
+    /*评论文本的: 宽度*/
+    .myWidth{
+        width: 91% !important;
+    }
 }
 
 i.icon.tag:before {
