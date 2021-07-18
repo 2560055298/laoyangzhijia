@@ -1,8 +1,0 @@
-spring:
-  profiles:
-    active: pro
-
-  messages:
-    basename: i18n.message
-
-comment.avatar: /images/comment.jpg
