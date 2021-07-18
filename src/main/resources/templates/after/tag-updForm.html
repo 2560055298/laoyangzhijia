@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <!--1、Head：标题、css-->
+    <head th:replace="common/backstage_fragment::headOne(标签添加弹出框)"></head>
+
+    <!--2、JS-->
+    <div th:replace="common/backstage_fragment::myJsOne"></div>
+
+    <!--3、内容-->
+    <body>
+        <div style="width: 380px; margin-top: 40px">
+            <form class="layui-form" action="" lay-filter="example" id="changefileform">
+                <input type="hidden" name="tagId" class="tagId" >
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">旧标签</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="oldTagName"  lay-verify="title" autocomplete="off" placeholder="旧标签名称" class="layui-input oldTagName" readonly>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">新标签</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="newTagName" lay-verify="title" autocomplete="off" placeholder="新标签名称" class="layui-input">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </body>
+</html>

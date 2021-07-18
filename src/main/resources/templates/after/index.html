@@ -1,0 +1,30 @@
+<!doctype html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+    <!--1、Head：标题、css-->
+    <head>
+        <meta charset="UTF-8">
+        <title>后台登录</title>
+        <link rel="stylesheet" href="layui/css/layui.css"  media="all" th:href="@{/lib/admin/layui/css/layui.css}">
+        <link rel="stylesheet" href="../static/css/admin/font.css" th:href="@{/css/admin/font.css}">
+        <link rel="stylesheet" href="./static/css/admin/xadmin.css" th:href="@{/css/admin/xadmin.css}">
+        <link href="java.ico" rel="shortcut icon" type="image/x-icon"  th:href="@{/images/favicon.png}"/>
+    </head>
+
+    <!--2、JS-->
+    <div>
+        <script src="../static/lib/admin/layui/layui.js" charset="utf-8" th:src="@{/lib/admin/layui/layui.js}"></script>
+        <script type="text/javascript" src="../static/js/admin/xadmin.js" th:src="@{/js/admin/xadmin.js}"></script>
+    </div>
+
+    <!--3、内容-->
+    <body class="index">
+        <!--顶部管理信息-->
+        <div class="container" th:replace="common/backstage_fragment::top"></div>
+
+        <!-- 左侧菜单nav -->
+        <div class="left-nav" th:replace="common/backstage_fragment::leftNav"></div>
+
+        <!-- 右侧内容-->
+        <div class="page-content" th:replace="common/backstage_fragment::rightNav"></div>
+    </body>
+</html>

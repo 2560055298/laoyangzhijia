@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <!--1、Head：标题、css-->
+    <head th:replace="common/backstage_fragment::headOne(添加标签)">
+        <meta charset="UTF-8">
+        <title>添加标签</title>
+        <link rel="stylesheet" href="layui/css/layui.css"  media="all" th:href="@{/lib/admin/layui/css/layui.css}">
+    </head>
+
+    <!--2、JS引用-->
+    <div th:replace="common/backstage_fragment::myJsOne">
+        <script src="../static/lib/admin/layui/layui.js" charset="utf-8" th:src="@{/lib/admin/layui/layui.js}"></script>
+    </div>
+
+    <!--3、内容-->
+    <body style="background-color: #FFFFFF">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>标签：添加页面</legend>
+        </fieldset>
+
+
+        <div style="width: 400px; margin: auto; margin-top: 100px">
+            <form class="layui-form" action="/after/tagAdd" method="post">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标签名称</label>
+                    <div class="layui-input-block mini">
+                        <input type="text" name="tagName" lay-verify="title" autocomplete="off" placeholder="请输入：标签名称" class="layui-input" required>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+    </div>
+    </body>
+
+
+    <!--4、添加标签，状态判断-->
+    <script th:inline="javascript">
+        layui.use('layer', function(){
+            var layer = layui.layer;
+            var tagMessage = [[${tagMessage}]];
+            console.log(tagMessage);
+
+            if(tagMessage == 'true'){
+                layer.alert('添加标签：成功！！！', {
+                    icon: 6,
+                    title: "提示"
+                });
+            }else if(tagMessage == 'false'){
+                layer.alert('添加标签：失败, 该标签已存在！！！', {
+                    icon: 5,
+                    title: "提示"
+                });
+            }else if(tagMessage === 'no'){
+                layer.alert('添加标签：失败, 数据库异常', {
+                    icon: 5,
+                    title: "提示"
+                });
+            }
+        });
+    </script>
+</html>

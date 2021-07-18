@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!--1、Head：标题、css-->
+    <head th:replace="common/backstage_fragment::headOne(用户表单弹出框)"></head>
+
+    <!--2、JS-->
+    <div th:replace="common/backstage_fragment::myJsOne"></div>
+
+    <!--3、内容-->
+    <body>
+        <form class="layui-form" action="" id="changefileform" style="margin-top: 30px">
+            <!--1、用户id-->
+            <input type="hidden" name="userId" class="userId">
+
+            <!--2、昵称-->
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">旧昵称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="oldNickname"  autocomplete="off" class="layui-input oldNickname" readonly>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">新昵称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="newNickname"  autocomplete="off" class="layui-input newNickname">
+                    </div>
+                </div>
+            </div>
+
+            <!--3、头像-->
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">旧头像</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="oldAvatar" autocomplete="off" class="layui-input oldAvatar" readonly>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">新头像</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="newAvatar"  autocomplete="off" class="layui-input newAvatar">
+                    </div>
+                </div>
+            </div>
+
+            <!--4、邮箱-->
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">旧邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="oldEmail" autocomplete="off" class="layui-input oldEmail" readonly>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">新邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="email" name="newEmail" autocomplete="off" class="layui-input newEmail">
+                    </div>
+                </div>
+            </div>
+
+            <!--5、密码-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">旧密码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="oldPassword"  placeholder="旧密码" autocomplete="off" class="layui-input oldPassword" readonly>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">新密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="newPassword"  placeholder="请输入密码"  class="layui-input newPassword"  lay-verify="type|required">
+                </div>
+                <div class="layui-form-mid layui-word-aux">请填写6到12位（系统自动加密前：初始密码）</div>
+            </div>
+        </form>
+    </body>
+</html>

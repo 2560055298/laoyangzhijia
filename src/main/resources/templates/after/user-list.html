@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <!--1、Head：标题、css-->
+    <head th:replace="common/backstage_fragment::headOne(用户列表)"></head>
+
+    <!--2、JS-->
+    <div th:replace="common/backstage_fragment::myJsOne"></div>
+
+    <!--3、内容-->
+    <body>
+        <div style="font-size: 15px; color: cornflowerblue; width: 200px; margin: auto; margin-top: 10px" th:unless="${null == userMessage}" th:text="${null != userMessage} ? ${userMessage}" ></div>
+        <table class="layui-hide" id="test" lay-filter="test"></table>
+        <script type="text/html" id="toolbarDemo">
+        </script>
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn  layui-btn-normal layui-btn-sm" lay-event="edit">修改</a>
+            <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+        </script>
+        <script>
+            layui.use('table', function(){
+                var table = layui.table;
+                var $ = layui.jquery;
+
+                table.render({
+                    elem: '#test'
+                    ,url:'/after/queryAllUser'
+                    ,toolbar: '#toolbarDemo'
+                    ,title: '用户信息'
+                    ,limits: [5, 10, 15, 20, 30]
+                    ,limit: 5
+                    ,done: function (res, curr, count){
+                        $("table").css("width", "100%");
+                    }
+                    ,cols: [
+                        [
+                            // {type: 'checkbox', fixed: 'left', width: 80}
+                            {field:'id', title:'用户ID', width:100, fixed: 'left', unresize: true, align: "center", hide:true}
+                            ,{field:'username', title:'用户名', width:90, align: "center", unresize: true}
+                            ,{field:'password', title:'密码', width:100, align: "center", unresize: true}
+                            ,{field:'type', title:'用户类型', width:100, align: "center", unresize: true}
+                            ,{field:'createTime', title:'创建时间', width:120, align: "center", unresize: true, templet : "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd')}}</div>"}
+                            ,{field:'nickname', title:'昵称', width:90, align: "center", unresize: true}
+                            ,{field:'avatar', title:'用户头像', width:170, align: "center", unresize: true}
+                            ,{field:'email', title:'邮箱', width:190, align: "center", unresize: true}
+                            ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:210, align: "center", unresize: true}
+                        ]
+                    ]
+                    ,page: true
+                });
+
+                //监听行工具事件
+                table.on('tool(test)', function(obj){
+                    var data = obj.data;
+                   // console.log(data);
+                    if(obj.event === 'del'){
+                        layer.confirm('确定要删除吗？', function(index){
+                            $.ajax({
+                                type: 'post',
+                                url: '/after/delUser', // ajax请求路径
+                                data: {
+                                    userId: data.id,
+                                },
+                                traditional: true,//这里设为true就可以了
+                                success: function(data){
+                                    if(data=='true'){
+                                        layer.msg('用户删除：成功！！！');
+                                    }
+                                    else if(data=='false'){
+                                        layer.msg('删除失败！！');
+                                    }
+                                    layer.close(index);
+
+                                    table.reload('test', {
+                                        page: {
+                                            curr: 1  //重新从第 1 页开始
+                                        }
+                                    });
+                                }
+                            });
+
+                        });
+                    } else if(obj.event === 'edit'){
+                        //页面层
+                        layer.open({
+                            title: '修改：用户信息',
+                            type: 2,
+                            skin: 'layui-layer-rim', //加上边框
+                            area: ['70%', '80%'], //宽高
+                            content: '/after/userUpdForm', //弹出的页面
+                            //shadeClose: true, //点击遮罩关闭
+                            btn: ['确定', '关闭'],
+                            success: function (layero, index) {
+                                let body = layer.getChildFrame('body', index);
+                                body.find(".userId").val(data.id);   //通过class名进行获取数据
+                                body.find(".oldNickname").val(data.nickname);
+                                body.find(".oldAvatar").val(data.avatar);
+                                body.find(".oldEmail").val(data.email);
+                                body.find(".oldPassword").val(data.password);
+                            },
+                            yes: function (index, layero) {         //按了弹出层的确定按钮时，这是将在父窗口中获取子窗口form标签里的所有值，并根据name名和值形成键值对json对象
+                                let body = layer.getChildFrame("body", index);
+                                let data = {};
+                                body.find("#changefileform").serializeArray().forEach(function (item) {    //获取弹出层写下的数据，input，下拉框啊，之类的表单元素（即changefileform下的所有数据）
+                                    data[item.name] = item.value;   //根据表单元素的name属性来获取数据
+                                });
+
+                                if(data.newPassword != null && data.newPassword != ''){
+                                    $.post('/after/updUser', data, function (result) {
+
+                                        if(result == "true"){
+                                            layer.alert('修改成功：跳转登录页面！！！', {
+                                                icon: 6,
+                                                title: "提示",
+
+                                            }, function () {
+                                                    window.parent.location.href="/after/logout";
+                                            });
+                                        }else{
+                                            layer.alert('修改失败, 请联系管理员。', {
+                                                icon: 5,
+                                                title: "提示"
+                                            });
+                                        }
+                                    });
+                                }else{
+                                    layer.alert('新密码：不能为空！!！', {
+                                        icon: 5,
+                                        title: "提示"
+                                    });
+                                }
+
+                                layer.close(index);
+                            }
+                        });
+
+                    }
+                });
+            });       //末尾：结束
+        </script>
+    </body>
+</html>

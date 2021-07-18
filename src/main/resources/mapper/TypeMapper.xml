@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yyy.mapper.TypeMapper">
+    <!--结果集：（查询：1） 使用了-->
+    <resultMap id="myResultOne" type="type">
+        <id property="id" column="tid"/>
+        <result property="name" column="tname"/>
+
+        <collection property="blogs" ofType="blog">
+            <id property="id" column="bid"/>
+        </collection>
+    </resultMap>
+
+    <!--1、查询：所有（博客类型）： 注意此处只有，blogs数目大于0才查询出来。否则不查询出来-->
+    <select id="selAllTypes" resultMap="myResultOne">
+        select t.id tid, t.name tname, b.id bid
+        from blog.t_type t, blog.t_blog b
+        where t.id = b.type_id
+    </select>
+
+    <!--2、通过：typeId查询， type-->
+    <select id="selTypeById" parameterType="Long" resultType="type">
+        select * from blog.t_type where id = #{id}
+    </select>
+
+
+    <!--3、查询：所有type（不包含blog）-->
+    <select id="selAllTypeNotBlogs" resultType="type">
+        select * from blog.t_type
+    </select>
+
+    <!--4、查询：分类的数目-->
+    <select id="selTypeCount" resultType="Long">
+        select count(*) from blog.t_type
+    </select>
+
+    <!--5、修改：分类（名称）-->
+    <update id="updateTypeByType" parameterType="type">
+        update blog.t_type set name = #{name} where id = #{id}
+    </update>
+
+    <!--6、查询：通过分类名称-->
+    <select id="selTypeByTypeName" parameterType="String" resultType="type">
+        select  * from blog.t_type where name = #{typeName}
+    </select>
+
+    <!--7、添加：分类-->
+    <insert id="insertTypeByTypeName" parameterType="String">
+        insert into  blog.t_type values(default, #{typeName})
+    </insert>
+
+    <!--8、删除分类：通过typeId-->
+    <delete id="deleteTypeByTypeId" parameterType="Long">
+        delete  from blog.t_type where id = #{typeId}
+    </delete>
+
+
+    <!--9、查询所有的Type：不用排序-->
+    <select id="selAllTypesNotSort" resultType="type">
+        select * from blog.t_type
+    </select>
+</mapper>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+    <!--1、Head：标题、css-->
+    <head>
+        <meta charset="UTF-8">
+        <title>博客统计页面</title>
+        <link rel="stylesheet" href="../static/css/admin/font.css" th:href="@{/css/admin/font.css}">
+        <link rel="stylesheet" href="./static/css/admin/xadmin.css" th:href="@{/css/admin/xadmin.css}">
+    </head>
+
+    <!--2、JS-->
+    <div>
+        <script src="../static/lib/admin/layui/layui.js" charset="utf-8" th:src="@{/lib/admin/layui/layui.js}"></script>
+        <script type="text/javascript" src="../static/js/admin/xadmin.js" th:src="@{/js/admin/xadmin.js}"></script>
+    </div>
+
+    <!--3、内容-->
+    <body>
+        <!--文章数目：评论数目-->
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">数据统计</div>
+                        <div class="layui-card-body ">
+                            <ul class="layui-row layui-col-space10 layui-this x-admin-carousel x-admin-backlog">
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>文章数</h3>
+                                        <p>
+                                            <cite th:text="${blogsNum}">66</cite></p>
+                                    </a>
+                                </li>
+
+                                <li class="layui-col-md2 layui-col-xs6 ">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>评论数</h3>
+                                        <p>
+                                            <cite th:text="${commentsNum}">6766</cite></p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--短句-->
+        <div class="layui-fluid" style="margin-bottom: 10px; text-align: center">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <p class="x-myP">我们人的一生：其实很像进度条。</p>
+                        <p class="x-myP">有的人, 出生就自带了：20%</p>
+                        <p class="x-myP">自然，他们很容易跑到70%</p>
+                        <p class="x-myP">而有的人, 穷尽一生才勉强跑到50%</p>
+                        <p class="x-myP">切莫问, 谁更高贵, 我们就以生命界限而论：并无异同。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--进度条-->
+        <div style="margin: auto; width: 600px;" >
+            <div class="layui-progress layui-progress-big"  lay-showpercent="true" style="margin-bottom: 10px">
+                <div class="layui-progress-bar layui-bg-green" lay-percent="20%"></div>
+            </div>
+
+            <br>
+
+            <div class="layui-progress layui-progress-big" lay-showpercent="true" style="margin-bottom: 10px">
+                <div class="layui-progress-bar layui-bg-blue" lay-percent="50%" ></div>
+            </div>
+
+            <br>
+
+            <div class="layui-progress layui-progress-big" lay-showpercent="true">
+                <div class="layui-progress-bar layui-bg-cyan" lay-percent="70%"></div>
+            </div>
+            <br>
+        </div>
+
+    </body>
+</html>

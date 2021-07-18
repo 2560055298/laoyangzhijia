@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yyy.mapper.CommentMapper">
+    <!--1、通过博客id：查询评论的总数-->
+    <select id="selComNumByBlogId" parameterType="Long" resultType="int">
+        select count(*) from blog.t_comment where blog_id = #{id}
+    </select>
+
+    <!--2、通过博客id：设置评论-->
+    <select id="selComsByBlogId" parameterType="Long" resultType="comment">
+        select id, content, create_time 'createTime', email, avatar ,nickname, blog_id 'blog.id', parent_comment_id 'parentComment.id', admin_comment 'adminComment'
+        from blog.t_comment
+        where blog_id = #{id}
+        order by create_time
+    </select>
+
+    <!--3、通过评论父id：查询所有评论-->
+    <select id="selComsByFatherComId" parameterType="Long" resultType="comment">
+        select id, content, create_time 'createTime', nickname, email, blog_id 'blog.id', parent_comment_id 'parentComment.id', avatar, admin_comment 'adminComment'
+        from blog.t_comment
+        where parent_comment_id = #{id}
+        order by create_time
+    </select>
+
+    <!--4、通过博客id：删除对应的（所有）评论-->
+    <delete id="deleteCommentsById" parameterType="long">
+        delete from blog.t_comment where blog_id = #{id}
+    </delete>
+
+    <!--5、插入一条评论-->
+    <insert id="insertCommentByComment" parameterType="comment">
+        insert into blog.t_comment values(default, #{content}, #{createTime}, #{email}, #{nickname}, #{blog.id}, #{parentComment.id}, #{avatar}, #{adminComment})
+    </insert>
+
+
+    <!--6、删除子评论：通过fatherCommentId-->
+    <delete id="deleteChildsCommentByCommentId" parameterType="Long">
+        delete from blog.t_comment where parent_comment_id = #{fatherCommentId}
+    </delete>
+
+    <!--7、删除当前评论：通过commentId-->
+    <delete id="deleteCommentsByCommentId" parameterType="Long">
+        delete from blog.t_comment where id = #{commentId}
+    </delete>
+
+    <!--8、查询：评论总数目-->
+    <select id="selCommentsNum" resultType="Long">
+        select count(*) from blog.t_comment
+    </select>
+</mapper>

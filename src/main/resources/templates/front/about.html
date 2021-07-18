@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!--1、头部-->
+    <head th:replace="common/front_fragment::head(关于我)"></head>
+
+    <!--2、、js引用-->
+    <div th:replace="common/front_fragment::myJs">
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" th:src="@{/js/semantic.js}"></script>
+    </div>
+
+    <!--3、中间内容、底部footer-->
+    <body>
+        <div class="wrap">
+            <div class="main">
+                <!--3.1：导航栏-->
+                <div>
+                    <nav th:replace="~{common/front_fragment::nav(5)}"></nav>
+                </div>
+
+                <!--3.2：中间内容-->
+                <div class="m-container-small m-padded-tb-big m-opacity" style="vertical-align: middle">
+                    <div class="container">
+                            <div class="ui stackable grid">
+                            <div class="ten wide column about_picture">
+                                    <div class="ui segment" style="background: aliceblue !important;">
+                                        <img src="https://picsum.photos/id/239/800/600" th:src="@{/images/about_img.png}" alt="" class="ui rounded image">
+                                    </div>
+                                </div>
+
+                                <div class="six wide column about_text">
+                                    <div class="ui top header attached segment">关于我</div>
+
+                                    <!--自我介绍-->
+                                    <div class="ui attached m-text segment">
+                                        <p>一个喜欢CS专业的：倔强青年。</p>
+                                        <p>虽读的书很少，但尊重爱书之人。</p>
+                                        <p>今虽腹中少墨，也望他日可教书育人。</p>
+                                    </div>
+
+                                    <!--兴趣爱好-->
+                                    <div class="ui attached segment">
+                                        <div class="ui orange basic label">读书</div>
+                                        <div class="ui blue  basic label">编程</div>
+                                        <div class="ui teal  basic label">反思</div>
+                                        <div class="ui brown basic label">写作</div>
+                                    </div>
+
+
+                                    <div class="ui  bottom attached segment">
+                                        <a class="ui github black circular icon button" href="https://github.com/2560055298" data-content="点击跳转：GitHub" data-position="bottom center"  target="_blank"><i class="github icon"></i></a>
+                                        <a class="ui gitee red circular icon button" href="https://gitee.com/sheep-are-flying-in-the-sky" data-content="点击跳转：Gitee" data-position="bottom center"  target="_blank"><i class="google icon"></i></a>
+                                        <a class="ui csdn orange circular icon button" href="https://blog.csdn.net/weixin_44537669" data-content="点击跳转：CSDN" data-position="bottom center" target="_blank"><i class="copyright outline icon"></i></a>
+                                        <a class="ui blue circular icon button" id="qq"><i class="qq icon" ></i></a>
+                                        <a class="ui green circular icon button" id="wechat" ><i class="weixin icon"></i></a>
+                                        <a class="ui email teal  circular icon button" data-content="邮箱：laoyangzhijia@aliyun.com" data-position="bottom center"><i class="envelope icon"></i></a>
+                                    </div>
+
+
+
+                                    <div class="ui weChatQ flowing popup transition hidden title-front-redius">
+                                        <div class="ui image">
+                                            <img src="../../static/images/wechat.png" th:src="@{/images/wechat.jpg}" style="width:110px" alt="" class="ui centered rounded image">
+                                            <div style="text-align: center">微信</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ui QQ flowing popup transition hidden title-front-redius">
+                                        <div class="ui image">
+                                            <img src="../../static/images/qq.png" th:src="@{/images/qq.png}" style="width:110px" alt="" class="ui centered rounded image">
+                                            <div style="text-align: center">QQ</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--3.3：底部footer-->
+        <footer th:replace="common/front_fragment::footer"></footer>
+    </body>
+
+
+    <!--4、JS代码：
+                    4-1、手机端：菜单点击按钮（JS）
+                    4-2、图标跳转按钮 (github、gitee、csdn、wechat、qq、email)
+    -->
+    <script>
+
+        //4-1、手机端：菜单点击按钮（JS）
+        $('.menu.toggle').click(function(){
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+
+        //4-2、图标跳转按钮 (github、gitee、csdn、wechat、qq、email)
+        $('.github')
+            .popup();
+
+        $('.gitee')
+            .popup();
+
+        $('.csdn')
+            .popup();
+
+        $('#wechat').popup({
+            popup: $('.weChatQ.popup'),
+            position: 'top center'
+        });
+
+        $('#qq').popup({
+            popup: $('.QQ.popup'),
+            position: 'top center'
+        });
+
+        $('.email')
+            .popup();
+    </script>
+</html>
+
+

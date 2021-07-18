@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+# 设置：数据源
+spring:
+  thymeleaf:
+    cache: false  #设置：thymeleaf 缓存为false, 这样修改之后马上生效，便于调试
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver  #连接驱动：Java连接mysql数据库
+    url: jdbc:mysql://localhost:3306/jwt?useTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: root        #您：需要修改
+    password: 123456      #您：需要修改
+
+
+
+# 配置：mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml    # 设置：接口绑定mapper路径
+  type-aliases-package: com.yyy.pojo	      # 设置：实体类别名
+
+
+# 配置pageHelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

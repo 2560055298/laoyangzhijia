@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="common/front_fragment::head(404页面)">
+        <meta charset="UTF-8">
+        <title>404</title>
+    </head>
+
+    <body>
+        <!--导航栏-->
+        <div>
+            <nav th:replace="~{common/front_fragment::nav(0)}"></nav>
+        </div>
+
+        <br/><br/>
+        <div class="m-container-small m-padded-tb-massive">
+            <div class="ui error message m-padded-tb-massive">
+                <div class="ui center aligned container">
+                    <h2>404</h2>
+                    <h4>对不起，你访问的资源不存在</h4>
+                </div>
+            </div>
+        </div>
+
+        <br/><br/>
+        <!--底部footer-->
+        <!--底部footer-->
+        <div>
+            <footer class="ui vertical inverted segment m-padded-tb-small-top" style="position: fixed; bottom: 0; width: 100%">
+                <div class="ui center aligned container">
+                    <div class="m-text-thin m-text-spaced m-opacity-tiny">Copyright ©1997 - 2021 老洋之家</div>
+                    <div class="ui padded-lr-big vertical m-padded-tb-small  m-mobile-clear">
+                        <img src="/img/new/gongan.png" th:src="@{/images/gongan.jpg}" style="vertical-align: sub; width: 18px">
+                        <span style="color: #969797 !important;">湘公网安备 43112502431137号</span>
+                        <a class="police" href="http://beian.miit.gov.cn" target="_blank" style="color: #969797;">湘ICP备2021005178号-2</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+    <!--1、Head：标题、css-->
+    <head>
+        <meta charset="UTF-8">
+        <title>博客列表</title>
+        <link rel="stylesheet" href="../static/css/admin/font.css" th:href="@{/css/admin/font.css}">
+        <link rel="stylesheet" href="./static/css/admin/xadmin.css" th:href="@{/css/admin/xadmin.css}">
+        <link rel="stylesheet" href="layui/css/layui.css"  media="all" th:href="@{/lib/admin/layui/css/layui.css}">
+    </head>
+
+    <!--2、JS-->
+    <div>
+        <script src="../static/lib/admin/layui/layui.js" charset="utf-8" th:src="@{/lib/admin/layui/layui.js}"></script>
+        <script type="text/javascript" src="../static/js/admin/xadmin.js" th:src="@{/js/admin/xadmin.js}"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js" th:src="@{/js/admin/jquery.min.js}"></script>
+    </div>
+
+    <!--3、内容-->
+    <body>
+    <!--博客：搜索栏-->
+    <div class="layui-card-body">
+        <!--标题-->
+        <div class="layui-input-inline layui-show-xs-block">
+            <input  type="text" id="search_title" name="title" placeholder="博客标题" autocomplete="off" class="layui-input">
+        </div>
+
+        <!--博客分类-->
+        <div class="layui-inline layui-show-xs-block layui-col-space5 layui-form">
+            <select id="search_type" name="typeName">
+                <option value="" disabled selected>博客分类</option>
+                <option th:each="type:${types}" th:value="${type.name}" th:text="${type.name}">1</option>
+            </select>
+        </div>
+
+        <!--博客推荐-->
+        <div class="layui-inline layui-show-xs-block layui-form">
+            &nbsp;<span>推荐</span>&nbsp;
+            <input type="checkbox" id="search_recommend"  name="recommend" lay-skin="primary">
+        </div>
+
+
+        <!--搜索按钮-->
+        <div class="layui-inline layui-show-xs-block">
+            <button class="layui-btn layui-bg-black"  id="search_btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+    </div>
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+
+
+
+    <script type="text/html" id="toolbarDemo">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm layui-bg-black" lay-event="getCheckData">批量删除</button>
+        </div>
+    </script>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    <script>
+        layui.use('table', function(){
+            var table = layui.table;
+            var $ = layui.jquery;       //获取jquery对象
+            var form = layui.form;
+
+            table.render({
+                    elem: '#test'
+                    ,url:'/after/showBlogTable'
+                    ,toolbar: '#toolbarDemo'
+                    ,title: '老洋之家：博客数据'
+                    ,size: 'lg' //大尺寸的表格
+                    ,cellMinWidth: 40
+                    ,done: function (res, curr, count){
+                        $("table").css("width", "100%");
+                    }
+                    ,cols: [
+                        [
+                            {type: 'checkbox', fixed: 'left'}
+                            ,{field:'id', title:'ID' ,fixed: 'left', sort: true, unresize: true, hide:true}
+                            ,{field:'title', title:'文章标题', unresize: true, align: "center"}
+                            ,{field:'typeName', title:'文章类型',unresize: true,width:100, align: "center"}
+                            ,{field:'createTime', title:'创建时间',sort: true,width:100, align: 'center', unresize: true, templet : "<div>{{layui.util.toDateString(d.createTime, 'yyyy-MM-dd')}}</div>"}
+                            ,{field:'published', title:'发布状态',unresize: true,width:90, align: 'center', templet: function (res) { //推荐
+                                let menuId = res.id;
+                                if (res.published == true) {
+                                    return "<p>已发布</p>"
+                                } else if (res.published == false) {
+                                    return "<p style='color: red; font-weight: 600;'>未发布</p>"
+                                }
+                            }}
+                            ,{field:'recommend', title:'推荐', width:95, unresize: true, align: 'center',templet: function (res) { //推荐
+                                let menuId = res.id;
+                                if (res.recommend == true) {
+                                    return "   <input type='checkbox'  menuId = '" + menuId + "' lay-filter='recommend' lay-skin='switch' lay-text='开启|关闭' checked>"
+                                } else if (res.recommend == false) {
+                                    return "   <input type='checkbox'  menuId = '" + menuId + "'  lay-filter='recommend' lay-skin='switch' lay-text='开启|关闭'>"
+                                }
+                            }}
+                            ,{field:'commentabled', title:'评论', width:95, unresize: true, align: 'center', templet: function (res) { //（评论）：res是所有的行的：数据
+                                let menuId = res.id;              //存放：每一行的id
+                                if (res.commentabled == true) {   //获取到：res行中的（commentabled属性）设置checkbox：每一行的评论框的id为当前行的的id, 监听名称统一为commentabled
+                                    return "   <input type='checkbox'  menuId = '" + menuId + "' lay-filter='commentabled' lay-skin='switch' lay-text='开启|关闭' checked>"
+                                } else if (res.commentabled == false) {
+                                    return "   <input type='checkbox'  menuId = '" + menuId + "'  lay-filter='commentabled' lay-skin='switch' lay-text='开启|关闭'>"
+                                }
+                            }}
+                            ,{field:'appreciation', title:'赞赏', width:95, unresize: true, align: 'center', templet: function (res) {    //赞赏
+                                let menuId = res.id;
+                                if (res.appreciation == true) {
+                                    return "   <input type='checkbox'  menuId = '" + menuId + "' lay-filter='appreciation' lay-skin='switch' lay-text='开启|关闭' checked>"
+                                } else if (res.appreciation == false) {
+                                    return "   <input type='checkbox'  menuId = '" + menuId + "'  lay-filter='appreciation' lay-skin='switch' lay-text='开启|关闭'>"
+                                }
+                            }}
+                            ,{field:'shareStatement', title:'版权', width:95, unresize: true, align: 'center', templet: function (res) {    //版权
+                                let menuId = res.id;
+                                if (res.shareStatement == true) {
+                                    return "   <input type='checkbox'  menuId = '" + menuId + "' lay-filter='shareStatement' lay-skin='switch' lay-text='开启|关闭' checked>"
+                                } else if (res.shareStatement == false) {
+                                    return "   <input type='checkbox'  menuId = '" + menuId + "'  lay-filter='shareStatement' lay-skin='switch' lay-text='开启|关闭'>"
+                                }
+                            }}
+                            ,{fixed: 'right', title:'操作', toolbar: '#barDemo', align: 'center', unresize: true, width: 195}
+                        ]
+                    ]
+
+                    ,limits: [5, 10, 15, 20]
+                    ,limit:5 //每页显示的条数
+                    ,page: true
+                }
+            );
+
+
+            //工具栏事件
+            table.on('toolbar(test)', function(obj){
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch(obj.event){
+                    case 'getCheckData':
+                        layer.confirm('确定要删除吗？', function(index){
+                            var data = checkStatus.data;
+                            //layer.alert(JSON.stringify(data));  //打印选中行：所有信息
+
+                            let array = [];
+                            data.forEach(e => {
+                                array.push(e.id)        //将：选中行的id，依次添加到array数组
+                            })
+
+                            $.ajax({
+                                type: 'post',
+                                url: '/after/delAllBlog', // ajax请求路径
+                                data: {
+                                    ids: array
+                                },
+                                traditional: true,//这里设为true就可以了
+                                success: function(data){
+                                    if(data=='true'){
+                                        layer.msg('博客：批量删除成功！！');
+                                    }
+                                    else if(data=='false'){
+                                        layer.msg('博客：批量删除失败 ！！！');
+                                    }
+
+                                    layer.close(index);
+                                    var searchTitle = $('#search_title');
+                                    var searchType = $('#search_type');
+                                    var searchRecommend = $('#search_recommend');
+
+                                    table.reload('test', {          //重载：表格内容
+                                        page: {
+                                            curr: 1  //重新从第 1 页开始
+                                        },
+                                        where: {
+                                            title: searchTitle.val(),
+                                            typeName: searchType.val(),
+                                            recommend: searchRecommend.prop("checked")
+                                        }
+                                    });
+                                }
+                            });
+
+                        });
+                };
+            });
+
+
+            //监听行工具事件
+            table.on('tool(test)', function(obj){
+                var data = obj.data;
+                //console.log(data);
+
+                if(obj.event === 'detail'){
+                    window.open('/front/blog/' + data.id,'_blank');
+                }else if(obj.event === 'del'){
+                    let array = [];
+                    array.push(data.id);
+
+                    layer.confirm('确定要删除吗？', function(index){
+                        $.ajax({
+                            type: 'post',
+                            url: '/after/delAllBlog', // ajax请求路径
+                            data: {
+                                ids: array
+                            },
+                            traditional: true,//这里设为true就可以了
+                            success: function(data){
+                                if(data=='true'){
+                                    layer.msg('博客：删除成功！！！');
+                                }
+                                else if(data=='false'){
+                                    layer.msg('博客：删除失败！！！');
+                                }
+
+                                layer.close(index);
+
+                                var searchTitle = $('#search_title');
+                                var searchType = $('#search_type');
+                                var searchRecommend = $('#search_recommend');
+                                table.reload('test', {
+                                    page: {
+                                        curr: 1  //重新从第 1 页开始
+                                    },
+                                    where: {
+                                        title: searchTitle.val(),
+                                        typeName: searchType.val(),
+                                        recommend: searchRecommend.prop("checked")
+                                    }
+                                });
+                            }
+                        });
+                    });
+                } else if(obj.event === 'edit'){
+                    //页面层
+                    window.open('/after/toUpdBlogPage/' + data.id);
+                }
+            });
+
+
+            /**
+             * 给指定元素：绑定事件
+             */
+            $(document).on('click', '#search_btn', function (data) {
+                var searchTitle = $('#search_title');
+                var searchType = $('#search_type');
+                var searchRecommend = $('#search_recommend');
+
+                table.reload('test', {
+                    where: {
+                        title: searchTitle.val(),
+                        typeName: searchType.val(),
+                        recommend: searchRecommend.prop("checked")
+                    },
+                    page: {
+                        curr: 1  //重新从第 1 页开始
+                    }
+                });
+            })
+
+            //监听评论
+            form.on('switch(commentabled)', function (data) {
+                layer.confirm('确定要修改吗？', function(index){
+                    var id = data.elem.attributes['menuId'].nodeValue;
+                    var state = data.elem.checked;
+                    //评论按钮
+                    $.ajax({
+                        type: 'post',
+                        url: '/after/updSwitch', // ajax请求路径
+                        data: {
+                            blogId: id,
+                            switchName: 'commentabled',
+                            switchState: state
+                        },
+                        success: function(data){
+                            if(data=='true'){
+                                layer.msg('修改成功');
+                            }
+                            else if(data=='false'){
+                                layer.msg('添加失败');
+                            }
+                        }
+                    });
+
+                    layer.close(index);
+                });
+            });
+
+            //监听推荐
+            form.on('switch(recommend)', function (data) {
+                layer.confirm('确定要修改吗？', function(index){
+                    var id = data.elem.attributes['menuId'].nodeValue;
+                    var state = data.elem.checked;
+
+                    $.ajax({
+                        type: 'post',
+                        url: '/after/updSwitch', // ajax请求路径
+                        data: {
+                            blogId: id,
+                            switchName: 'recommend',
+                            switchState: state
+                        },
+                        success: function(data){
+                            if(data=='true'){
+                                layer.msg('修改成功');
+                            }
+                            else if(data=='false'){
+                                layer.msg('添加失败');
+                            }
+                        }
+                    });
+                    layer.close(index);
+                });
+            });
+
+            //监听赞赏
+            form.on('switch(appreciation)', function (data) {
+                layer.confirm('确定要修改吗？', function(index) {
+                    var id = data.elem.attributes['menuId'].nodeValue;
+                    var state = data.elem.checked;
+
+
+                    $.ajax({
+                        type: 'post',
+                        url: '/after/updSwitch', // ajax请求路径
+                        data: {
+                            blogId: id,
+                            switchName: 'appreciation',
+                            switchState: state
+                        },
+                        success: function (data) {
+                            if (data == 'true') {
+                                layer.msg('修改成功');
+                            } else if (data == 'false') {
+                                layer.msg('添加失败');
+                            }
+                        }
+                    });
+                    layer.close(index);
+                });
+            });
+
+            //监听版权
+            form.on('switch(shareStatement)', function (data) {
+                layer.confirm('确定要修改吗？', function(index) {
+                    var id = data.elem.attributes['menuId'].nodeValue;
+                    var state = data.elem.checked;
+
+                    $.ajax({
+                        type: 'post',
+                        url: '/after/updSwitch', // ajax请求路径
+                        data: {
+                            blogId: id,
+                            switchName: 'shareStatement',
+                            switchState: state
+                        },
+                        success: function (data) {
+                            if (data == 'true') {
+                                layer.msg('修改成功');
+                            } else if (data == 'false') {
+                                layer.msg('添加失败');
+                            }
+                        }
+                    });
+
+                    layer.close(index);
+                });
+
+            });
+        });
+
+    </script>
+    </body>
+</html>

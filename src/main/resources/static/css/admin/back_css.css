@@ -1,0 +1,6 @@
+/*blog信息：选择框宽度*/
+.blog-choose{
+    min-width: 25px !important;
+    width: 25px !important;
+}
+

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!--1、顶部管理信息-->
+    <div class="container" style="height: 60px" th:fragment="top">
+        <div class="logo">
+            <a href="#">老洋之家：后台管理</a>
+        </div>
+
+        <ul class="layui-nav right" lay-filter="" style="top: 10px">
+            <li class="layui-nav-item">
+                <a href="javascript:;" th:text="${session.user.nickname}">admin</a>
+                <dl class="layui-nav-child">
+                    <!-- 二级菜单 -->
+                    <dd class="close-all" data-type="closeall">
+                        <a href="./login.html" th:href="@{/after/logout}">退出</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item to-index">
+                <a href="/" th:href="@{/}" target="_blank" >前台首页</a></li>
+        </ul>
+</div>
+
+    <!-- 2、左侧菜单nav-->
+    <div class="left-nav " th:fragment="leftNav">
+        <div id="side-nav">
+            <ul id="nav">
+                <!--1、博客管理-->
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont edit" lay-tips="博客管理">&#xe69e;</i>
+                        <cite>博客管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('博客列表','/after/blog-list', true)">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>博客列表</cite>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/after/toAddBlogPage}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>新增博客</cite></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!--2、分类管理-->
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont folder" lay-tips="分类管理">&#xe83c;</i>
+                        <cite>分类管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('分类列表','/after/typeList', true)">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>分类列表</cite></a>
+                        </li>
+                        <li>
+                            <a onclick="xadmin.add_tab('新增分类','/after/typeAddPage', true)">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>新增分类</cite></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!--3、标签管理-->
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont discount" lay-tips="标签管理">&#xe6c5;</i>
+                        <cite>标签管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('标签列表','/after/tagList', true)">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>标签列表</cite></a>
+                        </li>
+
+                        <li>
+                            <a onclick="xadmin.add_tab('新增标签','/after/tagAddPage', true)">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>新增标签</cite></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!--4、用户管理-->
+                <li>
+                    <a href="javascript:;">
+                        <i class="iconfont left-nav-li" lay-tips="用户管理">&#xe6b8;</i>
+                        <cite>用户管理</cite>
+                        <i class="iconfont nav_right">&#xe697;</i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="xadmin.add_tab('用户列表','/after/userList', true)">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>用户列表</cite></a>
+                        </li>
+
+                        <li>
+                            <a onclick="xadmin.add_tab('新增用户','/after/userAddPage', true)">
+                                <i class="iconfont">&#xe6a7;</i>
+                                <cite>新增用户</cite></a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--3、右侧内容-->
+    <div class="page-content" th:fragment="rightNav">
+        <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+            <ul class="layui-tab-title">
+                <li class="home">
+                    <i class="layui-icon">&#xe68e;</i>我的桌面</li></ul>
+            <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">
+                <dl>
+                    <dd data-type="this">关闭当前</dd>
+                    <dd data-type="other">关闭其它</dd>
+                    <dd data-type="all">关闭全部</dd></dl>
+            </div>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <iframe src='./welcome.html' th:src="@{/after/welcome}" frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                </div>
+            </div>
+            <div id="tab_show"></div>
+        </div>
+
+        <script>
+            //js代码
+            layui.use('element',function(){
+                var $ = layui.jquery;
+                var element = layui.element;//Tab的切换功能，切换事件监听等，需要依赖element模块
+                var layer = layui.layer;
+                var active = {
+                    //在这里给active绑定事件，后面可通过active调用这些事件
+                    tabDeleteAll:function(ids){//删除所有
+                        $.each(ids,function(i,item){
+                            element.tabDelete("xbs_tab",item);//ids是一个数组，里面存放了多个id，调用tabDelete方法分别删除
+                        })
+                    }
+                };
+
+                $(".close-all").click(function () {
+                    if ($(this).attr("data-type") == "closeall") {
+                        var tabtitle = $(".layui-tab-title li");
+                        var ids = new Array();
+                        $.each(tabtitle, function (i) {
+                            ids[i] = $(this).attr("lay-id");
+                        });
+                        active.tabDeleteAll(ids);
+                    }
+
+                })
+            });
+
+        </script>
+    </div>
+
+    <!--4、分类、标签、用户 （head头）-->
+    <head th:fragment="headOne(myTitle)">
+        <meta charset="UTF-8">
+        <title th:text="${myTitle}">标题</title>
+        <link rel="stylesheet" href="layui/css/layui.css"  media="all" th:href="@{/lib/admin/layui/css/layui.css}">
+    </head>
+
+    <!--4、分类、标签、用户（引入js）-->
+    <div th:fragment="myJsOne">
+        <script src="../static/lib/admin/layui/layui.js" charset="utf-8" th:src="@{/lib/admin/layui/layui.js}"></script>
+    </div>
+</html>

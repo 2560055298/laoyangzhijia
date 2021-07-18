@@ -1,0 +1,46 @@
+# ssl配置
+# https加密端口号 443
+# 服务器运行端口
+server:
+  port: 443
+  # SSL证书路径 一定要加上classpath，证书名只能有一个后缀，否则找不到不到文件，如：name.cn.jks 则找不到
+  ssl:
+    key-store: classpath:laoyangzhijia.jks    #您：需要修改
+    # SSL证书密码
+    key-store-password: 3rxvgzg5a5m9          #您：需要修改
+    enabled: true
+    # 证书类型
+    key-store-type: JKS                       #您：需要修改
+    # 证书别名，建议设置为证书域名，否则可能报错（Invalid keystore format），如：www.baidu.cn
+    key-alias: www.laoyangzhijia.com          #您：需要修改
+
+# 设置：映射到443的端口
+myHttp: 80
+
+# 设置：数据源
+spring:
+  thymeleaf:
+    cache: false  #设置：thymeleaf 缓存为false, 这样修改之后马上生效，便于调试
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver  #连接驱动：Java连接mysql数据库
+    url: jdbc:mysql://localhost:3306/blog?useTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: root             #您：需要修改
+    password: 123456           #您：需要修改
+
+
+
+# 配置：mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml            # 设置：接口绑定mapper路径
+  type-aliases-package: com.yyy.pojo	      # 设置：实体类别名
+
+
+# 配置pageHelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yyy.mapper.TagMapper">
+    <!--1、通过blogAndTag， 添加blogAndTag表数据-->
+    <insert id="insertBlogAndTagById" parameterType="blogAndTag">
+        insert into blog.t_blog_tags values(#{blogId}, #{tagId})
+    </insert>
+
+    <!--2、查询：所有的tag-->
+    <select id="selAllTag" resultType="com.yyy.vo.TagInfo">
+        select id 'value', name from blog.t_tag
+    </select>
+
+    <!--3、查询：tag集合通过blogId-->
+    <select id="selTagsByBlogId" parameterType="long" resultType="int" >
+        select tags_id from blog.t_blog_tags
+        where blogs_id = #{id}
+    </select>
+
+
+    <!--4、删除：通过blogId,删除（对应）所有标签-->
+    <delete id="deleteTagsById" parameterType="Long">
+        delete from blog.t_blog_tags where blogs_id = #{id}
+    </delete>
+
+    <!--5、查询：标签的数目-->
+    <select id="selTagCount" resultType="Long">
+        select count(*) from blog.t_tag
+    </select>
+
+    <!--6、查询：所有tag（不包含blog）-->
+    <select id="selAllTagNotBlogs" resultType="tag">
+        select * from blog.t_tag
+    </select>
+
+
+    <!--6、修改：标签（名称）-->
+    <update id="updateTagByTag" parameterType="tag">
+        update blog.t_tag set name = #{name} where id = #{id}
+    </update>
+
+
+    <!--7、查询：通过标签名称-->
+    <select id="selTagByTagName" parameterType="String" resultType="tag">
+        select * from blog.t_tag where name = #{tagName}
+    </select>
+
+
+    <!--9、添加：标签-->
+    <insert id="insertTagByTagName" parameterType="String">
+        insert into blog.t_tag values(default, #{tagName})
+    </insert>
+
+    <!--
+        10、查询：通过tagId查询t_blog_tags表的（条数）
+            大于0则不可以删除,说明博客使用了该标签
+    -->
+    <select id="selBlogsNumByTagId" parameterType="Long" resultType="Long">
+        select * from blog.t_blog_tags where tags_id = #{tagId}
+    </select>
+
+    <!--11、删除：通过tagId删除tag标签-->
+    <delete id="deleteTagByTagId" parameterType="Long">
+        delete from blog.t_tag where id = #{tagId}
+    </delete>
+
+    <!--12、通过tagId查询：tagName-->
+    <select id="selTagNameByTagId" parameterType="Long" resultType="tag">
+        select * from blog.t_tag where id = #{tagId}
+    </select>
+</mapper>

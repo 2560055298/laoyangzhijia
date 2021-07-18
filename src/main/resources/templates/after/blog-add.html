@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+
+    <!--1、Head：标题、css-->
+    <head>
+        <meta charset="UTF-8">
+        <title>新增博客</title>
+        <link rel="stylesheet" href="../static/css/admin/font.css" th:href="@{/css/admin/font.css}">
+        <link rel="stylesheet" href="./static/css/admin/xadmin.css" th:href="@{/css/admin/xadmin.css}">
+        <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}"/>
+        <link href="java.ico" rel="shortcut icon" type="image/x-icon"  th:href="@{/images/favicon.png}"/>
+    </head>
+
+    <!--2、JS-->
+    <div>
+        <script src="../static/lib/admin/layui/layui.js" charset="utf-8" th:src="@{/lib/admin/layui/layui.js}"></script>
+        <script type="text/javascript" src="../static/js/admin/xadmin.js" th:src="@{/js/admin/xadmin.js}"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js" th:src="@{/js/admin/jquery.min.js}"></script>
+        <script type="text/javascript" src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js" th:src="@{/js/admin/axios.min.js}"></script>
+        <!--markdown插件：css-->
+        <script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+    </div>
+
+    <!--3、内容-->
+    <body style="background: #FFFFFF">
+          <div style="margin: 4em 8em 10em 8em">
+              <div class="layui-row layui-col-space15">
+
+                <form id="form" class="layui-form layui-form-pane" action="/after/addBlog" method="post">
+                  <input type="hidden" name="uid" th:value="${session.user.id}">
+                  <input type="hidden" name="published" id="published">
+
+                  <!--1、文章：标题-->
+                  <div class="layui-form-item">
+                    <label class="layui-form-label">文章标题</label>
+                    <div class="layui-input-block">
+                      <input type="text" name="title" autocomplete="off" placeholder="请输入标题" class="layui-input" required>
+                    </div>
+                  </div>
+
+
+                  <!--2、Markdown博客内容：编辑区域-->
+                  <div class="layui-form-item">
+                    <div id="md-content" style="z-index: 1 !important;">
+                      <textarea name="content" placeholder="博客内容" style="resize:none"></textarea>
+                    </div>
+                  </div>
+
+                  <!--3、文章：性质、类型-->
+                  <div class="layui-form-item">
+                      <div class="layui-row">
+                        <!--1、文章性质-->
+                        <div class="layui-col-md1" >
+                          <label class="layui-form-label" style="width: 90px">文章来源</label>
+                        </div>
+
+                        <div class="layui-col-md5">
+                          <select name="flag">
+                            <option disabled>请选择</option>
+                            <option value="原创">原创</option>
+                            <option value="转载">转载</option>
+                            <option value="翻译">翻译</option>
+                          </select>
+                        </div>
+
+
+                        <!--2、文章类型-->
+                        <div class="layui-col-md1">
+                          <label class="layui-form-label" style="width: 90px">文章类型</label>
+                        </div>
+
+                        <div class="layui-col-md5">
+                          <select name="typeId">
+                            <option disabled>请选择</option>
+                            <option  th:each="type : ${types}" th:value="${type.id}" th:text="${type.name}">JS</option>
+                          </select>
+                        </div>
+
+
+
+                      </div>
+                  </div>
+
+                  <!--4、文章标签-->
+                  <div class="layui-form-item">
+                    <div class="layui-row">
+
+                      <div class="layui-col-md1">
+                        <label class="layui-form-label" style="width: 90px; margin: -1px">文章标签</label>
+                      </div>
+
+                      <div class="layui-col-md11" >
+                        <div id="demo1" class="xm-select-demo" onclick="p()"></div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <!--5、文章首图-->
+                  <div class="layui-form-item">
+                    <div class="layui-row">
+                      <div class="layui-col-md1">
+                        <label class="layui-form-label" style="width: 90px">文章首图</label>
+                      </div>
+
+                      <div class="layui-col-md11">
+                          <input type="url" name="firstPicture" autocomplete="off" placeholder="请输入首图：URL" class="layui-input" >
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--博客描述-->
+                  <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">博客描述</label>
+                    <div class="layui-input-block">
+                      <textarea placeholder="请输入内容" name="description" class="layui-textarea"></textarea>
+                    </div>
+                  </div>
+
+                  <!--6、复选框-->
+                  <div class="layui-form-item">
+                    <label class="layui-form-label" style="margin-top: 3px; width: 90px">选择开启</label>
+
+                    <div class="layui-input-block" style="margin-left: 10px">
+                      <input type="checkbox" name="recommend" title="博客（推荐">
+                      <input type="checkbox" name="commentabled" title="博客（评论）">
+                      <input type="checkbox" name="appreciation" title="博客（赞赏）">
+                      <input type="checkbox" name="shareStatement" title="博客（版权）">
+                    </div>
+                  </div>
+
+                  <!--7、返回、发布、提交 （按钮）-->
+                  <div class="layui-form-item">
+                    <button type="submit" class="layui-btn">发布</button>
+                    <button type="button" class="layui-btn layui-btn-normal" onclick="savaBlog()">草稿</button>
+                    <button type="button" class="layui-btn layui-btn-warm" onclick="myBack()">返回</button>
+                  </div>
+                </form>
+
+                <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
+                <script th:src="@{/lib/admin/xselector/xm-select.js}"></script>
+
+                <script>
+                  var demo1 = xmSelect.render({
+                      el: '#demo1',
+                      language: 'zn',
+                      tips: '请选择：文章标签',
+                      size: 'mini',
+                      direction: 'down',
+                      name: 'tags',          //表单提交的名字
+                      data: []
+                    });
+
+                    //动态标签下拉赋值
+                    axios({
+                      method: 'get',
+                      url: '/after/selTags',
+                    }).then(response => {
+                      var res = response.data;
+                      console.log(res);
+                      demo1.update({
+                        data: res,
+                        autoRow: true,
+                      })
+                    });
+                </script>
+              </div>
+          </div>
+
+
+          <script>
+            layui.use(['laydate','form'], function(){
+              var laydate = layui.laydate;
+
+              //执行一个laydate实例
+              laydate.render({
+                elem: '#start' //指定元素
+              });
+
+              //执行一个laydate实例
+              laydate.render({
+                elem: '#end' //指定元素
+              });
+            });
+            /*用户-删除*/
+            function member_del(obj,id){
+                layer.confirm('确认要删除吗？',function(index){
+                    //发异步删除数据
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                });
+            }
+
+
+
+            function delAll (argument) {
+
+              var data = tableCheck.getData();
+
+              layer.confirm('确认要恢复吗？'+data,function(index){
+                  //捉到所有被选中的，发异步进行删除
+                  layer.msg('恢复成功', {icon: 1});
+                  $(".layui-form-checked").not('.header').parents('tr').remove();
+              });
+            }
+
+
+            var testEditor;
+            $(function() {
+              testEditor = editormd("md-content", {
+                width   : "100%",
+                height  : 640,
+                syncScrolling : "single",
+                // path    : "../static/lib/editormd/lib/"
+                path    : "/lib/editormd/lib/"
+              });});
+
+            //草稿：保存
+            function savaBlog(){
+                $('#published').val('false');
+                $("#form").submit();
+            }
+
+
+            //返回：
+            function myBack() {
+                window.location.href = "/after/index";
+            }
+
+          </script>
+    </body>
+</html>

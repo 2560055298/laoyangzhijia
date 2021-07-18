@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <!--1、头部-->
+    <head>
+        <meta charset="UTF-8">
+        <!--移动端的：缩放-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" th:href="@{/css/semantic.css}">
+        <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+        <title>后台登录页面</title>
+    </head>
+
+    <!--2、、js引用-->
+    <div>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" th:src="@{/js/semantic.js}"></script>
+        <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    </div>
+
+    <!--3、中间内容-->
+    <body class="bg-end">
+        <div class="login_style">
+            <div class="m-container-small m-padded-tb-massive " style="max-width: 30em !important;">
+                <div class="ui container">
+                    <div class="ui middle aligned center aligned grid">
+                        <div class="column">
+                            <h2 class="ui teal header">
+                                <div class="content title-header-end">
+                                    登录页面
+                                </div>
+                            </h2>
+                            <form method="post" action="/after/login" th:action="@{/after/login}" class="ui large form" onsubmit="encryption()">
+                                <div class="ui segment">
+                                    <div class="field">
+                                        <div class="ui left icon input">
+                                            <i class="user icon"></i>
+                                            <input type="text" id="username" name="username" placeholder="用户名：英文、数字长度为4-10个字符" required pattern="[a-zA-Z0-9]{4,10}"  />
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui left icon input">
+                                            <i class="lock icon"></i>
+                                            <input type="password"  id="pwd" placeholder="密码：长度为6-16个字符" required pattern="[a-zA-Z0-9]{6,16}">
+                                            <input type="password" name="password" id="md5pwd" hidden/><br/>
+                                        </div>
+                                    </div>
+                                    <button  class="ui fluid large teal  button submit login-btn-end m-padded-low login-text-btn">登  录</button>
+                                </div>
+
+                                <div class="ui error mini message"></div>
+                                <div class="ui negative mini message" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+
+    <!--4、JS代码：
+                4-1、先加载背景：再加载数据
+                4-2、表单：密码加密
+    -->
+    <script type="text/javascript">
+
+        //4-1、先加载背景：再加载数据
+        // 假设3秒加载完整个页面
+        // window.setTimeout(function()
+        // {
+        //     window.document.body.children[5].style.display="";
+        // },1);
+
+
+        //4-2、表单：密码加密
+        function encryption(){
+            md5pwd.value = md5(pwd.value);
+        }
+    </script>
+
+</html>

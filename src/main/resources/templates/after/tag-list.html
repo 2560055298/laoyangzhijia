@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!--1、Head：标题、css-->
+    <head th:replace="common/backstage_fragment::headOne(标签列表)"></head>
+
+    <!--2、JS-->
+    <div th:replace="common/backstage_fragment::myJsOne"></div>
+
+    <!--3、内容-->
+    <body>
+        <table class="layui-hide" id="test" lay-filter="test"></table>
+
+        <script type="text/html" id="toolbarDemo">
+        </script>
+
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn  layui-btn-normal layui-btn-sm" lay-event="edit">修改标签</a>
+            <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+        </script>
+
+        <script>
+            layui.use('table', function(){
+                var table = layui.table;
+                var $ = layui.jquery;
+
+                table.render({
+                    elem: '#test'
+                    ,url:'/after/queryAllTag'
+                    ,toolbar: '#toolbarDemo'
+                    ,title: '标签'
+                    ,limits: [5, 10, 15, 20, 30]
+                    ,limit: 5
+                    ,done: function (res, curr, count){
+                        $("table").css("width", "100%");
+                    }
+                    ,cols: [
+                        [
+                            // {type: 'checkbox', fixed: 'left', width: 80}
+                            {field:'id', title:'标签ID', fixed: 'left', unresize: true, align: "center", hide:true}
+                            ,{field:'name', title:'标签名称', align: "center"}
+                            ,{field:'blogNums', title:'拥有博客数目', align: "center"}
+                            ,{fixed: 'right', title:'操作', toolbar: '#barDemo', align: "center"}
+                        ]
+                    ]
+                    ,page: true
+                });
+
+                //监听行工具事件
+                table.on('tool(test)', function(obj){
+                    var data = obj.data;
+                    console.log(data);
+                    if(obj.event === 'del'){
+                        layer.confirm('确定要删除吗？', function(index){
+                            $.ajax({
+                                type: 'post',
+                                url: '/after/delTag', // ajax请求路径
+                                data: {
+                                    tagId: data.id
+                                },
+                                traditional: true,//这里设为true就可以了
+                                success: function(data){
+                                    if(data=='true'){
+                                        layer.msg('标签删除：成功！！！');
+                                    }
+                                    else if(data=='false'){
+                                        layer.msg('删除失败：有博客（属于该标签）！！');
+                                    }
+
+                                    layer.close(index);
+
+                                    table.reload('test', {
+                                        page: {
+                                            curr: 1  //重新从第 1 页开始
+                                        }
+                                    });
+                                }
+                            });
+                        });
+                    } else if(obj.event === 'edit'){
+                        //页面层
+                        layer.open({
+                            title: '修改：标签名称',
+                            type: 2,
+                            skin: 'layui-layer-rim', //加上边框
+                            area: ['39%', '60%'], //宽高
+                            content: '/after/tagUpdForm', //弹出的页面
+                            //shadeClose: true, //点击遮罩关闭 (遮罩：指弹出框以外的内容)
+                            btn: ['确定', '关闭'],
+                            success: function (layero, index) {
+                                let body = layer.getChildFrame('body', index);
+                                body.find(".tagId").val(data.id);   //通过class名进行获取数据
+                                body.find(".oldTagName").val(data.name);   //通过class名进行获取数据
+                            },
+                            yes: function (index, layero) {         //按了弹出层的确定按钮时，这是将在父窗口中获取子窗口form标签里的所有值，并根据name名和值形成键值对json对象
+                                //layer.alert('来到这里了'+index);
+                                let body = layer.getChildFrame("body", index);
+                                let data = {};
+                                body.find("#changefileform").serializeArray().forEach(function (item) {    //获取弹出层写下的数据，input，下拉框啊，之类的表单元素（即changefileform下的所有数据）
+                                    data[item.name] = item.value;   //根据表单元素的name属性来获取数据
+                                });
+
+                                //console.log(data);
+                                $.post('/after/updTag', data, function (result) {
+                                    if (result == "success") {
+                                        layer.alert("修改：标签成功！！！", function () {
+                                            layer.close(index);         //关闭弹出层
+                                            parent.location.reload();   //刷新父页面
+                                        });
+                                    }
+                                });
+
+                                layer.close(index);
+                            }
+                        });
+
+                    }
+                });
+            });       //末尾：结束
+        </script>
+
+    </body>
+</html>
