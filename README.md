@@ -43,7 +43,7 @@
 
 ### 项目演示
 
-项目演示地址： [http://www.macrozheng.com/admin/index.html](http://www.macrozheng.com/admin/index.html)  
+项目演示地址： 
 
 > 前台：博客页面
 
@@ -138,11 +138,6 @@ laoyangzhijia
 | Mysql | 8.0    | https://www.mysql.com/                                       |
 
 
+## 参考
+- 李仁密老师：[博客教程](https://www.bilibili.com/video/BV1HE411N76x)
 
-
-
-## 许可证
-
-[Apache License 2.0](https://github.com/macrozheng/mall/blob/master/LICENSE)
-
-Copyright (c) 2020-2021 laoyangzhijia
