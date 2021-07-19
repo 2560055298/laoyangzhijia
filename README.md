@@ -10,7 +10,6 @@
 </p>
 
 
-
 ## 友情提示
 
 > 1. **项目部署教程**：[在线访问地址](http://www.macrozheng.com/admin/index.html)。
@@ -21,118 +20,99 @@
 
 ## 创建背景
 
-以前在：CSDN、博客园写博客。
-写了2年多后，有了想自己搭建博客的冲动。 毕竟 "租房"总是让人感到没有"归属感"。
-于是我尝试过：用Hexo搭建静态博客，托管到GitHub上, 虽然轻巧炫酷，但体验后，才知：文章管理之不便。
+之前在：CSDN、博客园写博客。<br/>
+写了2年多后，有了想自己搭建博客的冲动。 毕竟 "租房"总是让人感到没有"归属感"。<br/>
+于是我尝试过：用Hexo搭建静态博客，托管到GitHub上, 虽然轻巧炫酷，但体验后，才知：文章管理之不便。<br/>
 因此：便开始创建（老洋之家）个人博客的征途。
+
+
 
 
 
 
 ## 项目介绍
 
-`mall`项目是一套电商系统，包括前台商城系统及后台管理系统，基于SpringBoot+MyBatis实现，采用Docker容器化部署。前台商城系统包含首页门户、商品推荐、商品搜索、商品展示、购物车、订单流程、会员中心、客户服务、帮助中心等模块。后台管理系统包含商品管理、订单管理、会员管理、促销管理、运营管理、内容管理、统计报表、财务管理、权限管理、设置等模块。
+`老洋之家`项目是一个（个人博客系统），包括前台博客页面及后台管理系统，基于SpringBoot+MyBatis实现，采用Tomcat容器部署。<br/>
+
+前台博客页面包含：首页、博客分类、归档页面、关于我页面、搜索页面、登录页面。<br/>
+
+后台管理系统包含：博客管理、分类管理、标签管理、用户管理 <br/>
+
+
 
 ### 项目演示
 
-#### 后台管理系统
-
-前端项目`mall-admin-web`地址：https://github.com/macrozheng/mall-admin-web
-
 项目演示地址： [http://www.macrozheng.com/admin/index.html](http://www.macrozheng.com/admin/index.html)  
 
-![后台管理系统功能演示](http://img.macrozheng.com/mall/project/mall_admin_show.png)
+> 前台：博客页面
 
-#### 前台商城系统
+<img src="https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/picture9/image-20210716205355695.png" alt="image-20210716205355695" style="zoom: 80%;" />
 
-前端项目`mall-app-web`地址：敬请期待......
+> 后台：管理系统
 
-项目演示地址：[http://www.macrozheng.com/app/mainpage.html](http://www.macrozheng.com/app/mainpage.html)
+![image-20210717094356930](https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/picture9/image-20210717094356930.png)
 
-![前台商城系统功能演示](http://img.macrozheng.com/mall/project/mall_app_show.png)
+
 
 ### 组织结构
 
 ``` lua
-mall
-├── mall-common -- 工具类及通用代码
-├── mall-mbg -- MyBatisGenerator生成的数据库操作代码
-├── mall-security -- SpringSecurity封装公用模块
-├── mall-admin -- 后台商城管理系统接口
-├── mall-search -- 基于Elasticsearch的商品搜索系统
-├── mall-portal -- 前台商城系统接口
-└── mall-demo -- 框架搭建时的测试代码
+laoyangzhijia
+├── src -- 源代码
+├── blog.sql -- 数据库表
+├── pom.xml -- 依赖配置文件
 ```
+
+
 
 ### 技术选型
 
-#### 后端技术
-
-| 技术                 | 说明                | 官网                                           |
-| -------------------- | ------------------- | ---------------------------------------------- |
-| SpringBoot           | 容器+MVC框架        | https://spring.io/projects/spring-boot         |
-| SpringSecurity       | 认证和授权框架      | https://spring.io/projects/spring-security     |
-| MyBatis              | ORM框架             | http://www.mybatis.org/mybatis-3/zh/index.html |
-| MyBatisGenerator     | 数据层代码生成      | http://www.mybatis.org/generator/index.html    |
-| Elasticsearch        | 搜索引擎            | https://github.com/elastic/elasticsearch       |
-| RabbitMQ             | 消息队列            | https://www.rabbitmq.com/                      |
-| Redis                | 分布式缓存          | https://redis.io/                              |
-| MongoDB              | NoSql数据库         | https://www.mongodb.com                        |
-| LogStash             | 日志收集工具        | https://github.com/elastic/logstash            |
-| Kibina               | 日志可视化查看工具  | https://github.com/elastic/kibana              |
-| Nginx                | 静态资源服务器      | https://www.nginx.com/                         |
-| Docker               | 应用容器引擎        | https://www.docker.com                         |
-| Jenkins              | 自动化部署工具      | https://github.com/jenkinsci/jenkins           |
-| Druid                | 数据库连接池        | https://github.com/alibaba/druid               |
-| OSS                  | 对象存储            | https://github.com/aliyun/aliyun-oss-java-sdk  |
-| MinIO                | 对象存储            | https://github.com/minio/minio                 |
-| JWT                  | JWT登录支持         | https://github.com/jwtk/jjwt                   |
-| Lombok               | 简化对象封装工具    | https://github.com/rzwitserloot/lombok         |
-| Hutool               | Java工具类库        | https://github.com/looly/hutool                |
-| PageHelper           | MyBatis物理分页插件 | http://git.oschina.net/free/Mybatis_PageHelper |
-| Swagger-UI           | 文档生成工具        | https://github.com/swagger-api/swagger-ui      |
-| Hibernator-Validator | 验证框架            | http://hibernate.org/validator                 |
 
 #### 前端技术
 
-| 技术       | 说明                  | 官网                                   |
-| ---------- | --------------------- | -------------------------------------- |
-| Vue        | 前端框架              | https://vuejs.org/                     |
-| Vue-router | 路由框架              | https://router.vuejs.org/              |
-| Vuex       | 全局状态管理框架      | https://vuex.vuejs.org/                |
-| Element    | 前端UI框架            | https://element.eleme.io               |
-| Axios      | 前端HTTP框架          | https://github.com/axios/axios         |
-| v-charts   | 基于Echarts的图表框架 | https://v-charts.js.org/               |
-| Js-cookie  | cookie管理工具        | https://github.com/js-cookie/js-cookie |
-| nprogress  | 进度条控件            | https://github.com/rstacruz/nprogress  |
+| 技术        | 说明            | 官网                                                 |
+| ----------- | --------------- | ---------------------------------------------------- |
+| Semantic UI | 前端框架        | https://semantic-ui.com/                             |
+| LayUi       | 路由框架        | https://www.layui.com/                               |
+| X-admin     | 后台模板        | https://gitee.com/daniuit/X-admin?_from=gitee_search |
+| jQuery      | JavaScript 库   | https://github.com/jquery/jquery                     |
+| Editormd    | Markdown 编辑器 | https://pandao.github.io/editor.md/                  |
+
+
+
+
+#### 后端技术
+
+| 技术       | 说明                | 官网                                           |
+| ---------- | ------------------- | ---------------------------------------------- |
+| SpringBoot | 容器+MVC框架        | https://spring.io/projects/spring-boo          |
+| MyBatis    | ORM框架             | http://www.mybatis.org/mybatis-3/zh/index.html |
+| SLF4J      | 日志门面            | http://www.slf4j.org/                          |
+| Logback    | 日志技术            | http://logback.qos.ch/                         |
+| Lombok     | 简化对象封装工具    | https://github.com/rzwitserloot/lombok         |
+| PageHelper | MyBatis物理分页插件 | http://git.oschina.net/free/Mybatis_PageHelper |
+
+
 
 #### 架构图
 
-##### 系统架构图
 
-![系统架构图](http://img.macrozheng.com/mall/project/mall_micro_service_arch.jpg)
 
 ##### 业务架构图
 
-![系统架构图](http://img.macrozheng.com/mall/project/mall_business_arch.png)
+<img src="https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/picture9/image-20210719222014411.png" alt="image-20210719222014411" style="zoom: 80%;" />
 
-#### 模块介绍
 
-##### 后台管理系统 `mall-admin`
 
-- 商品管理：[功能结构图-商品.jpg](document/resource/mind_product.jpg)
-- 订单管理：[功能结构图-订单.jpg](document/resource/mind_order.jpg)
-- 促销管理：[功能结构图-促销.jpg](document/resource/mind_sale.jpg)
-- 内容管理：[功能结构图-内容.jpg](document/resource/mind_content.jpg)
-- 用户管理：[功能结构图-用户.jpg](document/resource/mind_member.jpg)
 
-##### 前台商城系统 `mall-portal`
 
-[功能结构图-前台.jpg](document/resource/mind_portal.jpg)
+##### 数据库E-R图
 
-#### 开发进度
+<img src="https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/picture9/image-20210717173057950.png" alt="image-20210717173057950" style="zoom: 50%;" />
 
-![项目开发进度图](http://img.macrozheng.com/mall/project/mall_dev_flow.png)
+
+
+
 
 ## 环境搭建
 
@@ -141,20 +121,13 @@ mall
 | 工具          | 说明                | 官网                                            |
 | ------------- | ------------------- | ----------------------------------------------- |
 | IDEA          | 开发IDE             | https://www.jetbrains.com/idea/download         |
-| RedisDesktop  | redis客户端连接工具 | https://github.com/qishibo/AnotherRedisDesktopManager  |
-| Robomongo     | mongo客户端连接工具 | https://robomongo.org/download                  |
-| SwitchHosts   | 本地host管理        | https://oldj.github.io/SwitchHosts/             |
+| Navicat   | 数据库连接工具    | http://www.formysql.com/xiazai.html             |                                               |
 | X-shell       | Linux远程连接工具   | http://www.netsarang.com/download/software.html |
-| Navicat       | 数据库连接工具      | http://www.formysql.com/xiazai.html             |
-| PowerDesigner | 数据库设计工具      | http://powerdesigner.de/                        |
-| Axure         | 原型设计工具        | https://www.axure.com/                          |
-| MindMaster    | 思维导图设计工具    | http://www.edrawsoft.cn/mindmaster              |
-| ScreenToGif   | gif录制工具         | https://www.screentogif.com/                    |
+| Xftp | Linux远程传输工具 | https://www.netsarang.com/zh/xftp/ |
 | ProcessOn     | 流程图绘制工具      | https://www.processon.com/                      |
-| PicPick       | 图片处理工具        | https://picpick.app/zh/                         |
-| Snipaste      | 屏幕截图工具        | https://www.snipaste.com/                       |
-| Postman       | API接口调试工具      | https://www.postman.com/                        |
-| Typora        | Markdown编辑器      | https://typora.io/                              |
+| Snipaste  | 屏幕截图工具      | https://www.snipaste.com/                       |
+| Typora | Markdown编辑器 | https://typora.io/ |
+
 
 ### 开发环境
 
@@ -169,6 +142,8 @@ mall
 | Elasticsearch | 7.6.2  | https://www.elastic.co/downloads/elasticsearch               |
 | Logstash      | 7.6.2  | https://www.elastic.co/cn/downloads/logstash                 |
 | Kibana        | 7.6.2  | https://www.elastic.co/cn/downloads/kibana                   |
+
+
 
 ### 搭建步骤
 
@@ -188,20 +163,9 @@ mall
 - 本项目使用Docker Compose请参考： [mall在Linux环境下的部署（基于Docker Compose）](http://www.macrozheng.com/#/deploy/mall_deploy_docker_compose);
 - 本项目在Linux下的自动化部署请参考：[mall在Linux环境下的自动化部署（基于Jenkins）](http://www.macrozheng.com/#/deploy/mall_deploy_jenkins);
 
-> 相关环境部署
 
-- ELK日志收集系统的搭建请参考：[SpringBoot应用整合ELK实现日志收集](http://www.macrozheng.com/#/technology/mall_tiny_elk);
-- 使用MinIO存储文件请参考：[前后端分离项目，如何优雅实现文件存储](http://www.macrozheng.com/#/technology/minio_use);
-- 读写分离解决方案请参考：[你还在代码里做读写分离么，试试这个中间件吧](http://www.macrozheng.com/#/reference/gaea);
-- Redis集群解决方案请参考：[Docker环境下秒建Redis集群，连SpringBoot也整上了！](http://www.macrozheng.com/#/reference/redis_cluster)。
 
-## 公众号
 
-学习不走弯路，关注公众号「**macrozheng**」，回复「**学习路线**」，获取mall项目专属学习路线！
-
-加微信群交流，公众号后台回复「**加群**」即可。
-
-![公众号图片](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/qrcode_for_macrozheng_258.jpg)
 
 ## 许可证
 
