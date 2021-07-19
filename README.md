@@ -35,7 +35,7 @@
 
 `老洋之家`项目是一个（个人博客系统），包括前台博客页面及后台管理系统，基于SpringBoot+MyBatis实现，采用Tomcat容器部署。<br/>
 
-前台博客页面包含：首页、博客分类、归档页面、关于我页面、搜索页面、登录页面。<br/>
+前台博客页面包含：首页、博客文章页面、博客分类、归档页面、关于我页面、搜索页面、登录页面。<br/>
 
 后台管理系统包含：博客管理、分类管理、标签管理、用户管理 <br/>
 
@@ -74,7 +74,7 @@ laoyangzhijia
 | 技术        | 说明            | 官网                                                 |
 | ----------- | --------------- | ---------------------------------------------------- |
 | Semantic UI | 前端框架        | https://semantic-ui.com/                             |
-| LayUi       | 路由框架        | https://www.layui.com/                               |
+| LayUi       | 前端框架        | https://www.layui.com/                               |
 | X-admin     | 后台模板        | https://gitee.com/daniuit/X-admin?_from=gitee_search |
 | jQuery      | JavaScript 库   | https://github.com/jquery/jquery                     |
 | Editormd    | Markdown 编辑器 | https://pandao.github.io/editor.md/                  |
@@ -132,11 +132,10 @@ laoyangzhijia
 
 ### 开发环境
 
-| 工具       | 版本号 | 下载                                                         |
-| ---------- | ------ | ------------------------------------------------------------ |
-| JDK        | 1.8    | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html |
-| Mysql      | 8.0    | https://www.mysql.com/                                       |
-| SpringBoot | 2.5.2  | https://spring.io/projects/spring-boot                       |
+| 工具  | 版本号 | 下载                                                         |
+| ----- | ------ | ------------------------------------------------------------ |
+| JDK   | 1.8    | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html |
+| Mysql | 8.0    | https://www.mysql.com/                                       |
 
 
 
@@ -146,4 +145,4 @@ laoyangzhijia
 
 [Apache License 2.0](https://github.com/macrozheng/mall/blob/master/LICENSE)
 
-Copyright (c) 2018-2021 macrozheng
+Copyright (c) 2020-2021 laoyangzhijia
