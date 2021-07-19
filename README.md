@@ -5,9 +5,10 @@
 <p>
   <a href="https://www.laoyangzhijia.com"><img src="https://img.shields.io/badge/%E8%80%81%E6%B4%8B%E4%B9%8B%E5%AE%B6-%E4%B8%AA%E4%BA%BA%E7%AB%99%E7%82%B9-brightgreen" alt="网站地址"></a>
   <a href="www.laoyangzhijia.com"><img src="https://img.shields.io/badge/%E8%80%81%E6%B4%8B%E4%B9%8B%E5%AE%B6-%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA-blueg" alt="项目展示"></a>
-    <a href="https://gitee.com/sheep-are-flying-in-the-sky/laoyangzhijia"><img src="https://img.shields.io/badge/gitHub-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-red" alt="gitHub"></a>
+    <a href="https://github.com/2560055298/laoyangzhijia"><img src="https://img.shields.io/badge/gitHub-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-red" alt="gitHub"></a>
   <a href="https://gitee.com/sheep-are-flying-in-the-sky/laoyangzhijia"><img src="https://img.shields.io/badge/%E7%A0%81%E4%BA%91-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-orange" alt="码云"></a>
 </p>
+
 
 
 ## 友情提示
@@ -131,37 +132,11 @@ laoyangzhijia
 
 ### 开发环境
 
-| 工具          | 版本号 | 下载                                                         |
-| ------------- | ------ | ------------------------------------------------------------ |
-| JDK           | 1.8    | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html |
-| Mysql         | 5.7    | https://www.mysql.com/                                       |
-| Redis         | 5.0    | https://redis.io/download                                    |
-| MongoDB       | 4.2.5  | https://www.mongodb.com/download-center                      |
-| RabbitMQ      | 3.7.14 | http://www.rabbitmq.com/download.html                        |
-| Nginx         | 1.10   | http://nginx.org/en/download.html                            |
-| Elasticsearch | 7.6.2  | https://www.elastic.co/downloads/elasticsearch               |
-| Logstash      | 7.6.2  | https://www.elastic.co/cn/downloads/logstash                 |
-| Kibana        | 7.6.2  | https://www.elastic.co/cn/downloads/kibana                   |
-
-
-
-### 搭建步骤
-
-> Windows环境部署
-
-- Windows环境搭建请参考：[mall在Windows环境下的部署](http://www.macrozheng.com/#/deploy/mall_deploy_windows);
-- 注意：只启动mall-admin,仅需安装Mysql、Redis即可;
-- 克隆`mall-admin-web`项目，并导入到IDEA中完成编译：[前端项目地址](https://github.com/macrozheng/mall-admin-web);
-- `mall-admin-web`项目的安装及部署请参考：[mall前端项目的安装与部署](http://www.macrozheng.com/#/deploy/mall_deploy_web)。
-
-> Docker环境部署
-
-- 使用虚拟机安装CentOS7.6请参考：[虚拟机安装及使用Linux，看这一篇就够了](http://www.macrozheng.com/#/reference/linux_install);
-- Docker环境的安装请参考：[开发者必备Docker命令](http://www.macrozheng.com/#/reference/docker);
-- 本项目Docker镜像构建请参考：[使用Maven插件为SpringBoot应用构建Docker镜像](http://www.macrozheng.com/#/reference/docker_maven);
-- 本项目在Docker容器下的部署请参考：[mall在Linux环境下的部署（基于Docker容器）](http://www.macrozheng.com/#/deploy/mall_deploy_docker);
-- 本项目使用Docker Compose请参考： [mall在Linux环境下的部署（基于Docker Compose）](http://www.macrozheng.com/#/deploy/mall_deploy_docker_compose);
-- 本项目在Linux下的自动化部署请参考：[mall在Linux环境下的自动化部署（基于Jenkins）](http://www.macrozheng.com/#/deploy/mall_deploy_jenkins);
+| 工具       | 版本号 | 下载                                                         |
+| ---------- | ------ | ------------------------------------------------------------ |
+| JDK        | 1.8    | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html |
+| Mysql      | 8.0    | https://www.mysql.com/                                       |
+| SpringBoot | 2.5.2  | https://spring.io/projects/spring-boot                       |
 
 
 
