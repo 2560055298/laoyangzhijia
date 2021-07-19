@@ -5,14 +5,14 @@ server:
   port: 443
   # SSL证书路径 一定要加上classpath，证书名只能有一个后缀，否则找不到不到文件，如：name.cn.jks 则找不到
   ssl:
-    key-store: classpath:laoyangzhijia.jks    #您：需要修改
+    key-store: classpath:xxx.jks     #您：需要修改
     # SSL证书密码
-    key-store-password: 3rxvgzg5a5m9          #您：需要修改
+    key-store-password: xxx          #您：需要修改
     enabled: true
     # 证书类型
-    key-store-type: JKS                       #您：需要修改
+    key-store-type: JKS              
     # 证书别名，建议设置为证书域名，否则可能报错（Invalid keystore format），如：www.baidu.cn
-    key-alias: www.laoyangzhijia.com          #您：需要修改
+    key-alias: www.xxxx.com          #您：需要修改
 
 # 设置：映射到443的端口
 myHttp: 80
