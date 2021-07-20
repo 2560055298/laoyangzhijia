@@ -34,7 +34,7 @@
                   <div class="layui-form-item">
                     <label class="layui-form-label">文章标题</label>
                     <div class="layui-input-block">
-                      <input type="text" name="title" autocomplete="off" placeholder="请输入标题" class="layui-input" required>
+                      <input type="text" name="title" autocomplete="off" placeholder="请输入标题" class="layui-input" lay-verify="title">
                     </div>
                   </div>
 
@@ -42,7 +42,7 @@
                   <!--2、Markdown博客内容：编辑区域-->
                   <div class="layui-form-item">
                     <div id="md-content" style="z-index: 1 !important;">
-                      <textarea name="content" placeholder="博客内容" style="resize:none"></textarea>
+                      <textarea name="content" placeholder="博客内容" style="resize:none" lay-verify="content"></textarea>
                     </div>
                   </div>
 
@@ -70,14 +70,11 @@
                         </div>
 
                         <div class="layui-col-md5">
-                          <select name="typeId">
-                            <option disabled>请选择</option>
+                          <select name="typeId" lay-verify="required" lay-search="">
+                            <option value="">请选择</option>
                             <option  th:each="type : ${types}" th:value="${type.id}" th:text="${type.name}">JS</option>
                           </select>
                         </div>
-
-
-
                       </div>
                   </div>
 
@@ -104,7 +101,7 @@
                       </div>
 
                       <div class="layui-col-md11">
-                          <input type="url" name="firstPicture" autocomplete="off" placeholder="请输入首图：URL" class="layui-input" >
+                          <input  name="firstPicture" autocomplete="off" placeholder="请输入首图：URL" class="layui-input" lay-verify="required|url">
                       </div>
                     </div>
                   </div>
@@ -113,7 +110,7 @@
                   <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">博客描述</label>
                     <div class="layui-input-block">
-                      <textarea placeholder="请输入内容" name="description" class="layui-textarea"></textarea>
+                      <textarea placeholder="请输入内容" name="description" class="layui-textarea" lay-verify="description"></textarea>
                     </div>
                   </div>
 
@@ -131,8 +128,8 @@
 
                   <!--7、返回、发布、提交 （按钮）-->
                   <div class="layui-form-item">
-                    <button type="submit" class="layui-btn">发布</button>
-                    <button type="button" class="layui-btn layui-btn-normal" onclick="savaBlog()">草稿</button>
+                    <button class="layui-btn" lay-filter="formDemo" lay-submit>发布</button>
+                    <button class="layui-btn layui-btn-normal" lay-submit onclick="savaBlog()" >草稿</button>
                     <button type="button" class="layui-btn layui-btn-warm" onclick="myBack()">返回</button>
                   </div>
                 </form>
@@ -168,20 +165,32 @@
           </div>
 
 
-          <script>
-            layui.use(['laydate','form'], function(){
-              var laydate = layui.laydate;
-
-              //执行一个laydate实例
-              laydate.render({
-                elem: '#start' //指定元素
+        <!--1、发布：表单校验-->
+        <script type="text/javascript">
+              layui.use(['form'], function () {
+                  var form = layui.form;
+                  //自定义验证规则
+                  form.verify({
+                      title: function (value) {
+                          if (value.length < 1) {
+                              return '标题：不能为空！！！';
+                          }
+                      },
+                      content: function (value) {
+                          if (value.length < 1) {
+                              return '内容：不能为空！！！';
+                          }
+                      },
+                      description: function (value) {
+                          if (value.length < 1) {
+                              return '描述：不能为空！！！';
+                          }
+                      },
+                  });
               });
+          </script>
 
-              //执行一个laydate实例
-              laydate.render({
-                elem: '#end' //指定元素
-              });
-            });
+        <script>
             /*用户-删除*/
             function member_del(obj,id){
                 layer.confirm('确认要删除吗？',function(index){
@@ -218,7 +227,27 @@
             //草稿：保存
             function savaBlog(){
                 $('#published').val('false');
-                $("#form").submit();
+                layui.use(['form'], function () {
+                    var form = layui.form;
+                    //自定义验证规则
+                    form.verify({
+                        title: function (value) {
+                            if (value.length < 1) {
+                                return '标题：不能为空！！！';
+                            }
+                        },
+                        content: function (value) {
+                            if (value.length < 1) {
+                                return '内容：不能为空！！！';
+                            }
+                        },
+                        description: function (value) {
+                            if (value.length < 1) {
+                                return '描述：不能为空！！！';
+                            }
+                        },
+                    });
+                });
             }
 
 
