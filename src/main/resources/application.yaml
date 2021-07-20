@@ -14,3 +14,8 @@ searchsize: 5
 # 设置：（前端首页）推荐的博客数目
 recommendsize: 5
 
+
+# 二次加密的：salt (自定义)
+salt: 2021-06-05 18:22:34
+
+

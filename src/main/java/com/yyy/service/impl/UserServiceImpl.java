@@ -13,6 +13,7 @@ import com.yyy.vo.TypeVO;
 import com.yyy.vo.UserVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
@@ -28,6 +29,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Value("${salt}")
+    private String mySalt;
+
     //1、查询：通过（用户名、密码）， 查询user对象
     @Override
     public User queryUserByCode(String username, String password) {
@@ -39,7 +43,7 @@ public class UserServiceImpl implements UserService {
         try {
             md5 = MessageDigest.getInstance("MD5");
             Base64.Encoder base64Encoder = Base64.getEncoder();
-            salt = base64Encoder.encodeToString(md5.digest("2021-06-05 18:22:34".getBytes(StandardCharsets.UTF_8)));
+            salt = base64Encoder.encodeToString(md5.digest(mySalt.getBytes(StandardCharsets.UTF_8)));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -102,7 +106,7 @@ public class UserServiceImpl implements UserService {
             md5 = MessageDigest.getInstance("MD5");
             Base64.Encoder base64Encoder = Base64.getEncoder();
             newPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
-            salt = base64Encoder.encodeToString(md5.digest("2021-06-05 18:22:34".getBytes(StandardCharsets.UTF_8)));
+            salt = base64Encoder.encodeToString(md5.digest(mySalt.getBytes(StandardCharsets.UTF_8)));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -126,7 +130,7 @@ public class UserServiceImpl implements UserService {
             md5 = MessageDigest.getInstance("MD5");
             Base64.Encoder base64Encoder = Base64.getEncoder();
             newPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
-            salt = base64Encoder.encodeToString(md5.digest("2021-06-05 18:22:34".getBytes(StandardCharsets.UTF_8)));
+            salt = base64Encoder.encodeToString(md5.digest(mySalt.getBytes(StandardCharsets.UTF_8)));
         } catch (Exception e) {
             e.printStackTrace();
         }
