@@ -13,9 +13,10 @@
 
 ## 友情提示
 
-> 1. **项目部署教程**：[在线访问地址](http://www.macrozheng.com/admin/index.html)。
+> 1. **项目部署教程**：[在线访问地址]()。
 > 2. **项目部署文档**：[在线访问地址](https://2560055298.github.io/laoyangDeployDoc/#/)。
 > 3. **项目开发文档**：[在线访问地址](https://2560055298.github.io/laoyangzhijiaDoc/)。
+> 4. **开发过程遇到的（问题）**：[在线访问地址](https://2560055298.github.io/laoyangProblem/)。
 
 
 
