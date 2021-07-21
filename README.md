@@ -13,7 +13,7 @@
 
 ## 友情提示
 
-> 1. **项目部署教程**：[在线访问地址]()。
+> 1. **项目部署教程**：[在线访问地址](https://www.bilibili.com/video/BV1Yv411E7Gf)。
 > 2. **项目部署文档**：[在线访问地址](https://2560055298.github.io/laoyangDeployDoc/#/)。
 > 3. **项目开发文档**：[在线访问地址](https://2560055298.github.io/laoyangzhijiaDoc/)。
 > 4. **开发过程遇到的（问题）**：[在线访问地址](https://2560055298.github.io/laoyangProblem/)。
@@ -48,11 +48,11 @@
 
 > 前台：博客页面
 
-<img src="https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/picture9/image-20210716205355695.png" alt="image-20210716205355695" style="zoom: 80%;" />
+<img src="C:\Users\Lenovo\Desktop\front_index.png" alt="image-20210716205355695" style="zoom: 80%;" />
 
 > 后台：管理系统
 
-![image-20210717094356930](https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/picture9/image-20210717094356930.png)
+![image-20210717094356930](C:\Users\Lenovo\Desktop\after_index.png)
 
 
 
@@ -102,7 +102,7 @@ laoyangzhijia
 
 ##### 业务架构图
 
-<img src="https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/picture9/image-20210719222014411.png" alt="image-20210719222014411" style="zoom: 80%;" />
+<img src="C:\Users\Lenovo\Desktop\service_picture.png" alt="image-20210719222014411" style="zoom: 80%;" />
 
 
 
