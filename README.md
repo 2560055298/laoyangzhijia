@@ -4,10 +4,11 @@
 <h1 align="center" style="color:#99d9ea">老洋之家</h1>
 <p>
   <a href="https://www.laoyangzhijia.com"><img src="https://img.shields.io/badge/%E8%80%81%E6%B4%8B%E4%B9%8B%E5%AE%B6-%E4%B8%AA%E4%BA%BA%E7%AB%99%E7%82%B9-brightgreen" alt="网站地址"></a>
-  <a href="www.laoyangzhijia.com"><img src="https://img.shields.io/badge/%E8%80%81%E6%B4%8B%E4%B9%8B%E5%AE%B6-%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA-blueg" alt="项目展示"></a>
+  <a href="https://www.bilibili.com/video/BV1Yv411E7Gf"><img src="https://img.shields.io/badge/%E8%80%81%E6%B4%8B%E4%B9%8B%E5%AE%B6-%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA-blueg" alt="项目展示"></a>
     <a href="https://github.com/2560055298/laoyangzhijia"><img src="https://img.shields.io/badge/gitHub-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-red" alt="gitHub"></a>
   <a href="https://gitee.com/sheep-are-flying-in-the-sky/laoyangzhijia"><img src="https://img.shields.io/badge/%E7%A0%81%E4%BA%91-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-orange" alt="码云"></a>
 </p>
+
 
 
 
