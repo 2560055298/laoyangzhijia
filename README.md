@@ -48,11 +48,15 @@
 
 > 前台：博客页面
 
-<img src="C:\Users\Lenovo\Desktop\front_index.png" alt="image-20210716205355695" style="zoom: 80%;" />
+![front_index](https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/picture9/front_index.png)
+
+
+
+
 
 > 后台：管理系统
 
-![image-20210717094356930](C:\Users\Lenovo\Desktop\after_index.png)
+![after_index](https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/picture9/after_index.png)
 
 
 
@@ -102,7 +106,7 @@ laoyangzhijia
 
 ##### 业务架构图
 
-<img src="C:\Users\Lenovo\Desktop\service_picture.png" alt="image-20210719222014411" style="zoom: 80%;" />
+![下载](https://gitee.com/sheep-are-flying-in-the-sky/my-picture/raw/master/picture9/%E4%B8%8B%E8%BD%BD.png)
 
 
 
